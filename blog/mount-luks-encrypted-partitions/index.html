@@ -10,13 +10,15 @@
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="xtrymind">
 <meta name="description" content="I have use old 80gb seagate as my drive for arch linux on pc, encrypted with luks and use lvm. After finished arch install on new hard drive, it&rsquo;s time to copy file from old drive.
-see which partitions have been encrypted {% highlight shell_session %} root # blkid | grep crypto /dev/sdc2: UUID=&ldquo;68b5a97c-9e39-4713-946b-4325ffbeec88&rdquo; TYPE=&ldquo;crypto_LUKS&rdquo; PARTUUID=&ldquo;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&rdquo; {% endhighlight %}
-open luks partition and set up mapper name {% highlight shell_session %} root # cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2: {% endhighlight %}">
+see which partitions have been encrypted
+$ sudo blkid | grep crypto /dev/sdc2: UUID=&quot;68b5a97c-9e39-4713-946b-4325ffbeec88&quot; TYPE=&quot;crypto_LUKS&quot; PARTUUID=&quot;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&quot;  open luks partition and set up mapper name
+$ sudo cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2:  run lsblk to see partitions layout">
 
 <meta property="og:title" content="Mount luks encrypted partitions" />
 <meta property="og:description" content="I have use old 80gb seagate as my drive for arch linux on pc, encrypted with luks and use lvm. After finished arch install on new hard drive, it&rsquo;s time to copy file from old drive.
-see which partitions have been encrypted {% highlight shell_session %} root # blkid | grep crypto /dev/sdc2: UUID=&ldquo;68b5a97c-9e39-4713-946b-4325ffbeec88&rdquo; TYPE=&ldquo;crypto_LUKS&rdquo; PARTUUID=&ldquo;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&rdquo; {% endhighlight %}
-open luks partition and set up mapper name {% highlight shell_session %} root # cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2: {% endhighlight %}" />
+see which partitions have been encrypted
+$ sudo blkid | grep crypto /dev/sdc2: UUID=&quot;68b5a97c-9e39-4713-946b-4325ffbeec88&quot; TYPE=&quot;crypto_LUKS&quot; PARTUUID=&quot;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&quot;  open luks partition and set up mapper name
+$ sudo cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2:  run lsblk to see partitions layout" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xtrymind.github.io/blog/mount-luks-encrypted-partitions/" /><meta property="article:published_time" content="2017-11-27T07:28:00&#43;07:00"/>
 <meta property="article:modified_time" content="2017-11-27T07:28:00&#43;07:00"/>
@@ -45,11 +47,11 @@ open luks partition and set up mapper name {% highlight shell_session %} root # 
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.876939426%20%2b0700%20WIB%20m%3d%2b0.052335273">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.876939426%20%2b0700%20WIB%20m%3d%2b0.052335273">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.876939426%20%2b0700%20WIB%20m%3d%2b0.052335273">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2004%3a51%3a07.421864748%20%2b0700%20WIB%20m%3d%2b0.046941891">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2004%3a51%3a07.421864748%20%2b0700%20WIB%20m%3d%2b0.046941891">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2004%3a51%3a07.421864748%20%2b0700%20WIB%20m%3d%2b0.046941891">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.876939426%20%2b0700%20WIB%20m%3d%2b0.052335273">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2004%3a51%3a07.421864748%20%2b0700%20WIB%20m%3d%2b0.046941891">
     
 
 
@@ -158,39 +160,39 @@ open luks partition and set up mapper name {% highlight shell_session %} root # 
             <div class="markdown">
                 <p>I have use old 80gb seagate as my drive for arch linux on pc, encrypted with luks and use lvm. After finished arch install on new hard drive, it&rsquo;s time to copy file from old drive.</p>
 
-<p>see which partitions have been encrypted
-{% highlight shell_session %}
-root # blkid | grep crypto
-/dev/sdc2: UUID=&ldquo;68b5a97c-9e39-4713-946b-4325ffbeec88&rdquo; TYPE=&ldquo;crypto_LUKS&rdquo; PARTUUID=&ldquo;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&rdquo;
-{% endhighlight %}</p>
+<p>see which partitions have been encrypted</p>
 
-<p>open luks partition and set up mapper name
-{% highlight shell_session %}
-root # cryptsetup luksOpen /dev/sdc2/ vg0
+<pre><code>$ sudo blkid | grep crypto
+/dev/sdc2: UUID=&quot;68b5a97c-9e39-4713-946b-4325ffbeec88&quot; TYPE=&quot;crypto_LUKS&quot; PARTUUID=&quot;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&quot;
+</code></pre>
+
+<p>open luks partition and set up mapper name</p>
+
+<pre><code>$ sudo cryptsetup luksOpen /dev/sdc2/ vg0
 Enter passphrase for /dev/sdc2:
-{% endhighlight %}</p>
+</code></pre>
 
-<p>run <code>lsblk</code> to see partitions layout
-{% highlight shell_session %}
-root # lsblk
+<p>run <code>lsblk</code> to see partitions layout</p>
+
+<pre><code>$ sudo lsblk
 NAME           MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
-sdc              8:32   0  74.5G  0 disk<br />
-├─sdc1           8:33   0   512M  0 part<br />
-└─sdc2           8:34   0    74G  0 part<br />
-  └─vg0        254:0    0    74G  0 crypt
-    ├─vg0-swap 254:1    0     8G  0 lvm<br />
+sdc              8:32   0  74.5G  0 disk  
+├─sdc1           8:33   0   512M  0 part  
+└─sdc2           8:34   0    74G  0 part  
+  └─vg0        254:0    0    74G  0 crypt 
+    ├─vg0-swap 254:1    0     8G  0 lvm   
     └─vg0-root 254:2    0    66G  0 lvm
-{% endhighlight %}</p>
+</code></pre>
 
-<p>mount <code>vg0root</code>
-{% highlight shell_session %}
-root # mount /dev/mapper/vg0-root /home/user/vg0-root/
-{% endhighlight %}</p>
+<p>mount <code>vg0root</code></p>
 
-<p>after you have done copying or modifying file on encrypted partitions, umount partition and close luks with command
-{% highlight shell_session %}
-root # cryptsetup close vg0
-{% endhighlight %}</p>
+<pre><code>$ sudo mount /dev/mapper/vg0-root /home/user/vg0-root/
+</code></pre>
+
+<p>after you have done copying or modifying file on encrypted partitions, umount partition and close luks with command</p>
+
+<pre><code>$ sudo cryptsetup close vg0
+</code></pre>
 
                 <br>
                 

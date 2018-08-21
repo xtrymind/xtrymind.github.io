@@ -31,7 +31,7 @@ since it&amp;rsquo;s like that, i&amp;rsquo;m using this trick to set up python2
       <guid>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</guid>
       <description>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&amp;rsquo;s simple and fast but can&amp;rsquo;t use theme :3.
 here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
-systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
+systemd-boot ### install intel-ucode if you use intel proc $ pacman -S intel-ucode ### Initial ramdisk environment $ mkinitcpio -p linux $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
     </item>
     
     <item>
@@ -54,8 +54,8 @@ repo add xyne repo to /etc/pacman.conf
       <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
       <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
 install with command
-users $ sudo pacman -S inxi  first, run this command
-users $ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+$ sudo pacman -S inxi  first, run this command
+$ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
     </item>
     
     <item>

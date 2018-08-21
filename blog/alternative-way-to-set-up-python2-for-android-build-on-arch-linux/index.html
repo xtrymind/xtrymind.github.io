@@ -47,11 +47,11 @@ since it&rsquo;s like that, i&rsquo;m using this trick to set up python2 :" />
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.88093144%20%2b0700%20WIB%20m%3d%2b0.056327266">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.88093144%20%2b0700%20WIB%20m%3d%2b0.056327266">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.88093144%20%2b0700%20WIB%20m%3d%2b0.056327266">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2004%3a51%3a07.423273823%20%2b0700%20WIB%20m%3d%2b0.048350957">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2004%3a51%3a07.423273823%20%2b0700%20WIB%20m%3d%2b0.048350957">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2004%3a51%3a07.423273823%20%2b0700%20WIB%20m%3d%2b0.048350957">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.88093144%20%2b0700%20WIB%20m%3d%2b0.056327266">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2004%3a51%3a07.423273823%20%2b0700%20WIB%20m%3d%2b0.048350957">
     
 
 
@@ -168,14 +168,14 @@ but since android still use python2, and arch use python3 by default, you will h
 
 <p>since it&rsquo;s like that, i&rsquo;m using this trick to set up python2 :</p>
 
-<pre><code class="language-shell_session"> users $ sudo mkdir /opt/python2
- users $ cd /opt/python2
- users $ sudo ln -s $(which python2) python
+<pre><code>$ sudo mkdir /opt/python2
+$ cd /opt/python2
+$ sudo ln -s $(which python2) python
 </code></pre>
 
 <p>then put this on build script or paste on current terminal or in .zshrc or .bashrc</p>
 
-<pre><code class="language-conf"> export PATH=&quot;/opt/python2:$PATH&quot;
+<pre><code>export PATH=&quot;/opt/python2:$PATH&quot;
 </code></pre>
 
 <p>source :

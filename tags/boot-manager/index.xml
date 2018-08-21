@@ -19,7 +19,7 @@
       <guid>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</guid>
       <description>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&amp;rsquo;s simple and fast but can&amp;rsquo;t use theme :3.
 here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
-systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
+systemd-boot ### install intel-ucode if you use intel proc $ pacman -S intel-ucode ### Initial ramdisk environment $ mkinitcpio -p linux $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
     </item>
     
   </channel>

@@ -43,8 +43,7 @@ As workaround till topjohnwu came with official support for xiaomi unofficial tr
       <guid>https://xtrymind.github.io/blog/disable-wakelock-without-root-on-xiaomi-devices/</guid>
       <description>After succesfully configure BetterBatteryStats, it&amp;rsquo;s time to see what apps that has lots of wakelocks. Open BetterBatteryStats and go over Partial Wakelocks, you will see an apps that have wakelocks there.
 Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.
-{:height=&amp;ldquo;60%&amp;rdquo; width=&amp;ldquo;60%&amp;rdquo;}
-open cmd (if you&amp;rsquo;re on windows) or terminal (if you&amp;rsquo;re on linux) and enter adb shell, after that type this command: {% highlight shell_session %} users $ cmd appops set com.</description>
+open cmd (if you&amp;rsquo;re on windows) or terminal (if you&amp;rsquo;re on linux) and enter adb shell, after that type this command:</description>
     </item>
     
     <item>
@@ -65,8 +64,9 @@ On xiaomi device, you need to enable usb debugging and usb debugging (Security S
       
       <guid>https://xtrymind.github.io/blog/mount-luks-encrypted-partitions/</guid>
       <description>I have use old 80gb seagate as my drive for arch linux on pc, encrypted with luks and use lvm. After finished arch install on new hard drive, it&amp;rsquo;s time to copy file from old drive.
-see which partitions have been encrypted {% highlight shell_session %} root # blkid | grep crypto /dev/sdc2: UUID=&amp;ldquo;68b5a97c-9e39-4713-946b-4325ffbeec88&amp;rdquo; TYPE=&amp;ldquo;crypto_LUKS&amp;rdquo; PARTUUID=&amp;ldquo;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&amp;rdquo; {% endhighlight %}
-open luks partition and set up mapper name {% highlight shell_session %} root # cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2: {% endhighlight %}</description>
+see which partitions have been encrypted
+$ sudo blkid | grep crypto /dev/sdc2: UUID=&amp;quot;68b5a97c-9e39-4713-946b-4325ffbeec88&amp;quot; TYPE=&amp;quot;crypto_LUKS&amp;quot; PARTUUID=&amp;quot;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&amp;quot;  open luks partition and set up mapper name
+$ sudo cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2:  run lsblk to see partitions layout</description>
     </item>
     
     <item>
@@ -76,8 +76,7 @@ open luks partition and set up mapper name {% highlight shell_session %} root # 
       
       <guid>https://xtrymind.github.io/blog/show-thumbnail-on-nautilus/</guid>
       <description>based on arch wiki, &amp;ldquo;There is an ongoing issue with totem (the video thumbnailer for Nautilus) on computers with Intel GPUs. It will crash if gstreamer-vaapi is installed&amp;rdquo;. to resolve this, install ffmpegthumbnailer and gst-libav
-{% highlight shell_session %} users $ sudo pacman -S ffmpegthumbnailer gst-libav users $ rm -r ~/.cache/thumbnails/fail users $ killall -q nautilus {% endhighlight %}
-thumbnail will be generated now.</description>
+$ sudo pacman -S ffmpegthumbnailer gst-libav $ rm -r ~/.cache/thumbnails/fail $ killall -q nautilus  thumbnail will be generated now.</description>
     </item>
     
     <item>
@@ -153,8 +152,8 @@ i&amp;rsquo;m make flashable zip to remove some of sony marshmallow bloatware, n
       
       <guid>https://xtrymind.github.io/blog/enable-adoptive-storage-on-sony-xperia-m4aqua/</guid>
       <description>Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.
-well, if you want to read more : - Android - greenbot
-Sony comes up with Marshmallow (there won&amp;rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&amp;rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data).</description>
+well, if you want to read more :
+ Android greenbot  Sony comes up with Marshmallow (there won&amp;rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&amp;rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data).</description>
     </item>
     
     <item>
@@ -165,7 +164,7 @@ Sony comes up with Marshmallow (there won&amp;rsquo;t be Nougat) firmware for Xp
       <guid>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</guid>
       <description>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&amp;rsquo;s simple and fast but can&amp;rsquo;t use theme :3.
 here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
-systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
+systemd-boot ### install intel-ucode if you use intel proc $ pacman -S intel-ucode ### Initial ramdisk environment $ mkinitcpio -p linux $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
     </item>
     
     <item>
@@ -188,8 +187,8 @@ repo add xyne repo to /etc/pacman.conf
       <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
       <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
 install with command
-users $ sudo pacman -S inxi  first, run this command
-users $ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+$ sudo pacman -S inxi  first, run this command
+$ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
     </item>
     
     <item>

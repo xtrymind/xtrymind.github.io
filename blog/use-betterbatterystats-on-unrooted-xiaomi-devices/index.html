@@ -45,11 +45,11 @@ On xiaomi device, you need to enable usb debugging and usb debugging (Security S
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.873803938%20%2b0700%20WIB%20m%3d%2b0.049199800">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.873803938%20%2b0700%20WIB%20m%3d%2b0.049199800">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.873803938%20%2b0700%20WIB%20m%3d%2b0.049199800">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2004%3a51%3a07.420209353%20%2b0700%20WIB%20m%3d%2b0.045286545">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2004%3a51%3a07.420209353%20%2b0700%20WIB%20m%3d%2b0.045286545">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2004%3a51%3a07.420209353%20%2b0700%20WIB%20m%3d%2b0.045286545">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.873803938%20%2b0700%20WIB%20m%3d%2b0.049199800">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2004%3a51%3a07.420209353%20%2b0700%20WIB%20m%3d%2b0.045286545">
     
 
 
@@ -162,19 +162,18 @@ On xiaomi device, you need to enable usb debugging and usb debugging (Security S
 
 <p>On xiaomi device, you need to enable usb debugging and usb debugging (Security Settings) first. Go to about phone -&gt; tap on MIUI version 7 times -&gt; then go to Additional settings -&gt; developer options -&gt; and toggle usb debugging and usb debugging(security settings). To enable usb debugging(seccurity settings) you need to login to your xiaomi account.</p>
 
-<p><img src="https://i.imgur.com/Y45qr2Q.png" alt="Imgur" />{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}</p>
+<p><img src="https://i.imgur.com/Y45qr2Q.png" alt="Imgur" /></p>
 
 <p>open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command:</p>
 
-<p>{% highlight shell %}
-$ pm grant com.asksven.betterbatterystats android.permission.BATTERY_STATS
+<pre><code>$ pm grant com.asksven.betterbatterystats android.permission.BATTERY_STATS
 $ pm grant com.asksven.betterbatterystats android.permission.DUMP
 $ pm grant com.asksven.betterbatterystats android.permission.PACKAGE_USAGE_STATS
-{% endhighlight %}</p>
+</code></pre>
 
 <p>Exit adb shell and open BBS Apps, and you can now see detailed battery history.</p>
 
-<p><img src="https://i.imgur.com/1YHFLUE.png" alt="Imgur" />{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}</p>
+<p><img src="https://i.imgur.com/1YHFLUE.png" alt="Imgur" /></p>
 
                 <br>
                 

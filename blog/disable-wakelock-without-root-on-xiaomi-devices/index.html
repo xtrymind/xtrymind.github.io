@@ -11,14 +11,12 @@
 <meta name="author" content="xtrymind">
 <meta name="description" content="After succesfully configure BetterBatteryStats, it&rsquo;s time to see what apps that has lots of wakelocks. Open BetterBatteryStats and go over Partial Wakelocks, you will see an apps that have wakelocks there.
 Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.
-{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}
-open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command: {% highlight shell_session %} users $ cmd appops set com.">
+open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command:">
 
 <meta property="og:title" content="Disable wakelock without root on Xiaomi Devices" />
 <meta property="og:description" content="After succesfully configure BetterBatteryStats, it&rsquo;s time to see what apps that has lots of wakelocks. Open BetterBatteryStats and go over Partial Wakelocks, you will see an apps that have wakelocks there.
 Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.
-{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}
-open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command: {% highlight shell_session %} users $ cmd appops set com." />
+open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xtrymind.github.io/blog/disable-wakelock-without-root-on-xiaomi-devices/" /><meta property="article:published_time" content="2018-01-22T12:57:00&#43;07:00"/>
 <meta property="article:modified_time" content="2018-01-22T12:57:00&#43;07:00"/>
@@ -47,11 +45,11 @@ open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.874601142%20%2b0700%20WIB%20m%3d%2b0.049997020">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.874601142%20%2b0700%20WIB%20m%3d%2b0.049997020">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.874601142%20%2b0700%20WIB%20m%3d%2b0.049997020">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2004%3a51%3a07.420434085%20%2b0700%20WIB%20m%3d%2b0.045511228">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2004%3a51%3a07.420434085%20%2b0700%20WIB%20m%3d%2b0.045511228">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2004%3a51%3a07.420434085%20%2b0700%20WIB%20m%3d%2b0.045511228">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.874601142%20%2b0700%20WIB%20m%3d%2b0.049997020">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2004%3a51%3a07.420434085%20%2b0700%20WIB%20m%3d%2b0.045511228">
     
 
 
@@ -162,21 +160,21 @@ open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and
 
 <p>Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.</p>
 
-<p><img src="https://i.imgur.com/vadkMvL.png" alt="Imgur" />{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}</p>
+<p><img src="https://i.imgur.com/vadkMvL.png" alt="Imgur" /></p>
 
-<p>open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command:
-{% highlight shell_session %}
-users $ cmd appops set com.android.application WAKE_LOCK ignore
-{% endhighlight %}</p>
+<p>open cmd (if you&rsquo;re on windows) or terminal (if you&rsquo;re on linux) and enter adb shell, after that type this command:</p>
 
-<p>for Twitter apps, it should be
-{% highlight shell_session %}
-users $ cmd appops set com.twitter.android WAKE_LOCK ignore
-{% endhighlight %}</p>
+<pre><code>$ cmd appops set com.android.application WAKE_LOCK ignore
+</code></pre>
+
+<p>for Twitter apps, it should be</p>
+
+<pre><code>$ cmd appops set com.twitter.android WAKE_LOCK ignore
+</code></pre>
 
 <p>after that, all wakelocks requests by the app or in case above Twitter app, will be ignored by the Android system</p>
 
-<p><img src="https://i.imgur.com/EOR9nA8.png" alt="Imgur" />{:height=&ldquo;60%&rdquo; width=&ldquo;60%&rdquo;}</p>
+<p><img src="https://i.imgur.com/EOR9nA8.png" alt="Imgur" /></p>
 
 <p>Source: <a href="https://www.xda-developers.com/stop-wakelocks-android-without-root/">XDA</a></p>
 
