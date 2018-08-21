@@ -1,13 +1,8 @@
----
-layout: post
-comments: true
-title:  "Dualboot archlinux & windows 10 on Asus A46CB"
-date:   2017-03-23 14:20:26 +0700
-author: Dede Dindin Qudsy
-tags:   [archlinux, windows, Linux]
----
-`incomplete, need a lot of thing to do`
-
++++
+title =  "Dualboot archlinux & windows 10 on Asus A46CB"
+date =   "2017-03-23T14:20:26+07:00"
+author = "Dede Dindin Qudsy"
++++
 **Table of Contents**
 
 - [Archlinux on Asus A46CB](#archlinux-on-asus-a46cb)
@@ -55,77 +50,65 @@ an example of Windows 10 Efi partitioning on 120GB SSD
 
 #### Format and mount disks
 
-```shell_session
-root # mkfs.ext4 /dev/sda5
-root # mount /dev/sda5 /mnt
-root # mkdir /mnt/boot
-root # mount /dev/sda2 /mnt/boot
+```shell
+# mkfs.ext4 /dev/sda5
+# mount /dev/sda5 /mnt
+# mkdir /mnt/boot
+# mount /dev/sda2 /mnt/boot
 ```
 ### Install base system
 
-```shell_session
-root # wifi-menu
-check connections
-root # ping  -c 3 www.google.com
+```shell
+# wifi-menu
+# ping  -c 3 www.google.com #check connections
 ```
 
 install system and generate fstab
 
-```shell_session
-install base base development zsh and vim to /mnt 
-root # pacstrap /mnt base base-devel zsh vim
-generate new fstab
-root # genfstab -U /mnt >> /mnt/etc/fstab
+```shell
+# pacstrap /mnt base base-devel zsh vim #install base base development zsh and vim to /mnt 
+# genfstab -U /mnt >> /mnt/etc/fstab #generate new fstab
 ```
 
 
 ### Configure base system
 #### Chroot
-```shell_session
-enter chroot
-root # arch-chroot /mnt
+```shell
+# arch-chroot /mnt #enter chroot
 
-password for root
-root # passwd
+# passwd #password for root
 
-timezone
-root # ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-Hardware clock
-root # hwclock --systohc
+# ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime #timezone
+# hwclock --systohc #Hardware clock
 
-Locale
-root # vim /etc/locale.gen
-uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric system
-root # locale-gen
-root # echo LANG=en_US.UTF-8 > /etc/locale.conf
-root # export LANG=en_US.UTF-8
 
-Hostname
-root # echo arch > /etc/hostname
+# vim /etc/locale.gen #uncomment `en_US.UTF-8`
+# locale-gen #generate locale
+# echo LANG=en_US.UTF-8 > /etc/locale.conf
+# export LANG=en_US.UTF-8
+
+
+# echo arch > /etc/hostname #Hostname
 ```
-```conf
+```
 # edit /etc/hosts
- 127.0.0.1   localhost.localdomain   localhost
- ::1         localhost.localdomain   localhost
- 127.0.1.1   arch.localdomain        arch
+127.0.0.1   localhost.localdomain   localhost
+::1         localhost.localdomain   localhost
+127.0.1.1   arch.localdomain        arch
 ```
 
 #### Bootloader
-```shell_session
-install intel ucode if you have intel processor
-root # pacman -S intel-ucode
+```shell
+# pacman -S intel-ucode #install intel ucode if you have intel processor
 
-Initial ramdisk environment
-root # mkinitcpio -p linux
+# mkinitcpio -p linux #Initial ramdisk environment
 
-install bootloader, using systemd-boot
-root # bootctl --path=/boot install
+# bootctl --path=/boot install #install bootloader, using systemd-boot
 
-check partuuid of / partition
-root # blkid -s PARTUUID -o value /dev/sdxY
+# blkid -s PARTUUID -o value /dev/sdxY #check partuuid of / partition
 ```
 
-```conf
+```
 # Then add following content to /boot/loader/entries/arch.conf
 tittle    Arch
 linux     /vmlinuz-linux
@@ -133,125 +116,121 @@ initrd    /initramfs-linux.img
 initrd    /intel-ucode.img
 options   root=PARTUUID=xxxxx-xxx-xx rw
 ```
-```conf
+```
 # change entries on /boot/loader/loader.conf
 timeout 5
 default arch
 ```
 
 #### Network
-
-```shell_session
 Network configuration (Wi-Fi)
-root # pacman -S wpa_supplicant networkmanager dialog
-root # systemctl enable NetworkManager
+```shell
+# pacman -S wpa_supplicant networkmanager dialog
+# systemctl enable NetworkManager
 ```
-Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add `options ath9k nohwcrypt=1` to `/etc/modprobe.d/ath9k.conf `
-```shell_session
-root # echo options ath9k nohwcrypt=1 >> /etc/modprobe.d/ath9k.conf 
+Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add `options ath9k nohwcrypt=1` to `/etc/modprobe.d/ath9k.conf`
+```shell
+# echo options ath9k nohwcrypt=1 >> /etc/modprobe.d/ath9k.conf 
 ```
 #### Reboot
-```shell_session
-root # exit
-root # umount -R /mnt
-root # reboot
+```shell
+# exit
+# umount -R /mnt
+# reboot
 ```
 
 ### After installation
 
 #### Connect to the internet
-```shell_session
-root # nmtui
-root # ping google.co.id
+```shell
+# nmtui
+# ping google.co.id
 ```
 
 #### User Management
-```shell_session
-add user
-root # useradd -m -G wheel,users -s /bin/zsh xtrymind
-root # passwd xtrymind
+```shell
+# useradd -m -G wheel,users -s /bin/zsh xtrymind #add user
+# passwd xtrymind
 
-enable sudo for users
-root # EDITOR=vim visudo
+# EDITOR=vim visudo #enable sudo for users
 ```
-```conf
+```ini
 # Uncomment this line in vim:
 %wheel ALL=(ALL) ALL
 ```
 
 #### Mirror
-```shell_session
 best mirror
-users $ sudo pacman -S reflector
-users $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```shell
+$ sudo pacman -S reflector
+$ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
-```conf
-# enable 32bit support
+enable 32bit support
+```ini
 # In `/etc/pacman.conf`, uncomment:
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
-```shell_session
-users $ sudo pacman -Sy
+```shell
+$ sudo pacman -Sy
 ```
 
 #### Display
 
 #### Driver
-```shell_session
-users $ sudo pacman -S nvidia mesa xf86-video-intel
+```shell
+$ sudo pacman -S nvidia mesa xf86-video-intel
 ```
 
 #### Xorg
-```shell_session
-users $ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
+```shell
+$ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
 ```
 
 #### Bumblebee
-```shell_session
-users $ sudo pacman -S bbswitch bumblebee
-users $ sudo gpasswd -a xtrymind bumblebee
-users $ sudo systemctl enable bumblebeed
+```shell
+$ sudo pacman -S bbswitch bumblebee
+$ sudo gpasswd -a xtrymind bumblebee
+$ sudo systemctl enable bumblebeed
 ```
 
-```shell_session
-Reboot. After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
-users $ cat /proc/acpi/bbswitch
+After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
+```shell
+$ cat /proc/acpi/bbswitch
 0000:01:00.0 OFF
 ```
 
 #### WM
 install i3 as window manager
-```shell_session
-users $ sudo pacman -S i3
-copy xinit to home dirrectory
-users $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+```shell
+$ sudo pacman -S i3
+$ cp /etc/X11/xinit/xinitrc ~/.xinitrc #copy xinit to home dirrectory
 ```
-```conf
+```ini
 # open .xinitrc and delete started from twm & to exec xterm and add
 exec i3
 ```
 
 #### Terminal
 rxvt-unicode or urxvt is a nice terminal emulator, it's small and fast but a little complicated to configure
-```shell_session
-users $ sudo pacman -S rxvt-unicode urxvt-perls
+```shell
+$ sudo pacman -S rxvt-unicode urxvt-perls
 ```
 
 check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detail on how to configure urxvt.
 
 #### Touchpad
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
-```shell_session
-users $ sudo pacman -S libinput xf86-input-libinput
+```shell
+$ sudo pacman -S libinput xf86-input-libinput
 ```
 
 add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
-```shell_session
-users $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+```shell
+$ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
 ```
 
-```conf
+```
 Section "InputClass"
 	Identifier "touchpad"
 	Driver "libinput"
@@ -265,11 +244,11 @@ EndSection
 #### Power Management
 #### Powertop
 install it by command
-```shell_session
-users $ sudo pacman -S powertop
+```shell
+$ sudo pacman -S powertop
 ```
 and add systemd service, create ``/etc/systemd/system/powertop.service```
-```conf
+```
 [Unit]
 Description=Powertop tunings
 
@@ -281,8 +260,8 @@ ExecStart=/usr/bin/powertop --auto-tune
 WantedBy=multi-user.target
 ```
 then enable it
-```shell_session
-users $ sudo systemctl enable powertop.service
+```shell
+$ sudo systemctl enable powertop.service
 ```
 
 #### Laptop Mode
@@ -290,7 +269,7 @@ see this [kernel documentation](https://www.kernel.org/doc/Documentation/laptops
 
 create ``/etc/sysctl.d/laptop.conf``
 and add :
-```conf
+```
 vm.laptop_mode = 5
 ```
 
@@ -301,7 +280,7 @@ $ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
 $ [ 3515.096081] usb 2-3: device descriptor read/64, error -110
 ```
 to disable it make `/etc/modprobe.d/bluetooth.conf`
-```conf
+```
 # disable bluetooth
 blacklist btusb bluetooth
 install btusb /bin/false
@@ -312,14 +291,14 @@ install bluetooth /bin/false
 
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
 
-```shell_session
-users $ sudo pacman -S xorg-backlight
+```shell
+$ sudo pacman -S xorg-backlight
 ```
 add ``20-intel.conf`` to ``/etc/X11/xorg.conf.d/:``
-```shell_session
-users $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
+```shell
+$ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
 ```
-```conf
+```
 Section "Device"
 	Identifier  "Intel Graphics"
 	Driver      "intel"
@@ -331,7 +310,7 @@ EndSection
 ```
 Now, add commands to xbindkeys for manipulating the backlight:
 
-```conf
+```
 # Backlight Inc
 "/usr/bin/xbacklight -inc 5"
     m:0x0 + c:233
@@ -348,7 +327,7 @@ Now, add commands to xbindkeys for manipulating the backlight:
 Just install ``alsa-utils``, and use ``alsamixer`` to unmute the master channel. Should just work.
 
 For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
-```conf
+```
 # Volume Up
 "/usr/bin/amixer set Master 5%+"
    m:0x0 + c:123
@@ -367,16 +346,16 @@ For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
 #### Disk
 #### SSD
 Enable trim support
-```shell_session
-users $ sudo systemctl enable fstrim.timer
+```shell
+$ sudo systemctl enable fstrim.timer
 ```
 #### HDAPSD
 
 Protects your hard drive from sudden shocks
 
-```shell_session
-users $ sudo pacman -S hdapsd
-users $ sudo systemctl enable hdapsd
+```shell
+$ sudo pacman -S hdapsd
+$ sudo systemctl enable hdapsd
 ```
 
 
