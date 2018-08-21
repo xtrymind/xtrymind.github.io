@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&rsquo;s simple and fast but can&rsquo;t use theme :3.
+here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
+systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.">
+
+<meta property="og:title" content="Bootloader / boot manager for your arch and windows dualboot installation" />
+<meta property="og:description" content="I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&rsquo;s simple and fast but can&rsquo;t use theme :3.
+here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
+systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/" /><meta property="article:published_time" content="2017-03-31T07:44:26&#43;07:00"/>
+<meta property="article:modified_time" content="2017-03-31T07:44:26&#43;07:00"/>
+
+<title>
+
+
+     Bootloader / boot manager for your arch and windows dualboot installation 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.881575284%20%2b0700%20WIB%20m%3d%2b0.056971116">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.881575284%20%2b0700%20WIB%20m%3d%2b0.056971116">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.881575284%20%2b0700%20WIB%20m%3d%2b0.056971116">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.881575284%20%2b0700%20WIB%20m%3d%2b0.056971116">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Bootloader / boot manager for your arch and windows dualboot installation
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Fri Mar 31 2017 07:44:26 WIB'>Mar 31, 2017</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>2 minutes read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB.
+My favorite so far is systemd-boot because it&rsquo;s simple and fast but can&rsquo;t use theme :3.</p>
+
+<p>here command  to install your choice of boot manager for your dual boot installation.
+note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios</p>
+
+<h3 id="systemd-boot">systemd-boot</h3>
+
+<pre><code class="language-shell_session">install intel-ucode if you use intel proc
+users $ pacman -S intel-ucode
+Initial ramdisk environment
+users $ mkinitcpio -p linux
+users $ bootctl --path=/boot install
+</code></pre>
+
+<p>Then add following content to <code>/boot/loader/entries/arch.conf</code></p>
+
+<pre><code class="language-conf">tittle    Arch
+linux     /vmlinuz-linux
+initrd    /initramfs-linux.img
+initrd    /intel-ucode.img
+options   root=PARTUUID=***** rw
+</code></pre>
+
+<p>change entries on <code>/boot/loader/loader.conf</code></p>
+
+<pre><code class="language-conf">timeout 5
+default arch
+</code></pre>
+
+<p>More info :<a href="https://wiki.archlinux.org/index.php/Systemd-boot">systemd-boot</a></p>
+
+<h3 id="refind">rEFInd</h3>
+
+<pre><code class="language-shell_session">install intel-ucode if you use intel proc
+users $ pacman -S intel-ucode refind-efi
+Initial ramdisk environment
+users $ mkinitcpio -p linux
+ 
+users $ refind-install
+
+refind will find your ESP partitions but in case something wrong, you can manualy pointed your ESP where /dev/sdaXY is your ESP partitions
+users $ refind-install --usedefault /dev/sdXY
+</code></pre>
+
+<p>to add microcode, edit <code>/boot/refind_linux.conf</code></p>
+
+<pre><code class="language-conf">&quot;Boot with standard options&quot; &quot;rw root=UUID=(...) quiet initrd=/boot/intel-ucode.img&quot;
+</code></pre>
+
+<p>More info :<a href="https://wiki.archlinux.org/index.php/REFInd">rEFInd</a></p>
+
+<h3 id="grub">GRUB</h3>
+
+<pre><code class="language-shell_session">install intel-ucode if you use intel proc
+users $ pacman -S dosfstools grub efibootmgr intel-ucode
+users $ mkdir /boot/efi
+where /dev/sda2 is your windows ESP partitions
+users $ mount /dev/sda2 /boot/efi
+</code></pre>
+
+<p>Edit <code>/etc/default/grub</code>, set <code>DEFAULT_TIMEOUT=30</code>.</p>
+
+<pre><code class="language-shell_session">users $ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --recheck
+users $ grub-mkconfig -o boot/grub/grub.cfg
+</code></pre>
+
+<p>Now, let&rsquo;s add Windows to the GRUB menu. Edit <code>/boot/grub/grub.cfg</code> and add the following menuentry after the Arch Linux menuentries:</p>
+
+<pre><code class="language-conf">menuentry &quot;Windows 10&quot; --class windows --class os {
+    insmod part_gpt
+    insmod fat
+    insmod search_fs_uuid
+    insmod chain
+    search --fs-uuid --set=root $hints_string $fs_uuid
+    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+</code></pre>
+
+<p>where :</p>
+
+<p><code>$fs_uuid</code> by the output of</p>
+
+<pre><code class="language-shell_session">users $ grub-probe --target=fs_uuid /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
+</code></pre>
+
+<p><code>$hints_string</code>  by the output of</p>
+
+<pre><code class="language-shell_session">users $ grub-probe --target=hints_string /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
+</code></pre>
+
+<p>More info :<a href="https://wiki.archlinux.org/index.php/GRUB">GRUB</a></p>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://xtrymind.github.io/tags/archlinux">archlinux</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/bootloader">bootloader</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/boot-manager">boot manager</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/windows">windows</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/grub">grub</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/systemd-boot">systemd-boot</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/refind">refind</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

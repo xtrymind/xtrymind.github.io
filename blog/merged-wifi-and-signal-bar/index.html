@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi icon menyatu dengan signal icon. Karena Pexo cocoknya untuk M4Aqua dual sim (sebenernya tidak ada masalah dengan single sim, namun saya kurang nyaman he he) saya pindah lagi ke stock rom, dan saya ingin wifi saya menyatu dengan signal bar.
+Ketemu tutorialnya di sini langsung saja saya edit SystemUI nya.
+Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file /system/priv-app/systemui dan set permission rw-r--r-- atau 644 untuk octal nya.">
+
+<meta property="og:title" content="Merged Wifi and Signal Bar" />
+<meta property="og:description" content="Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi icon menyatu dengan signal icon. Karena Pexo cocoknya untuk M4Aqua dual sim (sebenernya tidak ada masalah dengan single sim, namun saya kurang nyaman he he) saya pindah lagi ke stock rom, dan saya ingin wifi saya menyatu dengan signal bar.
+Ketemu tutorialnya di sini langsung saja saya edit SystemUI nya.
+Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file /system/priv-app/systemui dan set permission rw-r--r-- atau 644 untuk octal nya." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/merged-wifi-and-signal-bar/" /><meta property="article:published_time" content="2017-08-09T09:50:00&#43;07:00"/>
+<meta property="article:modified_time" content="2017-08-09T09:50:00&#43;07:00"/>
+
+<title>
+
+
+     Merged Wifi and Signal Bar 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/merged-wifi-and-signal-bar/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.88037891%20%2b0700%20WIB%20m%3d%2b0.055774784">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.88037891%20%2b0700%20WIB%20m%3d%2b0.055774784">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.88037891%20%2b0700%20WIB%20m%3d%2b0.055774784">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.88037891%20%2b0700%20WIB%20m%3d%2b0.055774784">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Merged Wifi and Signal Bar
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Aug 9 2017 09:50:00 WIB'>Aug 9, 2017</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>One minute read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                <p>Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi icon menyatu dengan signal icon. Karena Pexo cocoknya untuk M4Aqua dual sim (sebenernya tidak ada masalah dengan single sim, namun saya kurang nyaman he he) saya pindah lagi ke stock rom, dan saya ingin wifi saya menyatu dengan signal bar.</p>
+
+<p>Ketemu tutorialnya di <a href="https://forum.xda-developers.com/crossdevice-dev/sony-themes-apps/tut-merged-wifi-signal-icons-lp-mm-t3408702">sini</a> langsung saja saya edit SystemUI nya.</p>
+
+<p>Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file <code>/system/priv-app/systemui</code> dan set permission <code>rw-r--r--</code> atau 644 untuk octal nya. dan jangan lupa backup systemui original.</p>
+
+<p>Download : <a href="https://www.androidfilehost.com/?fid=673368273298984294">SystemUI merged</a></p>
+
+<p><img src="https://i.imgur.com/N5QdiyP.png" alt="Imgur" /></p>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://xtrymind.github.io/tags/android">android</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/sony">sony</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/m4aqua">m4aqua</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

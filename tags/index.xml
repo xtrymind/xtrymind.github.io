@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on xtrymind</title>
+    <link>https://xtrymind.github.io/tags/</link>
+    <description>Recent content in Tags on xtrymind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 01 Apr 2017 07:39:26 +0700</lastBuildDate>
+    
+	<atom:link href="https://xtrymind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adoptive Storage</title>
+      <link>https://xtrymind.github.io/tags/adoptive-storage/</link>
+      <pubDate>Sat, 01 Apr 2017 07:39:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/adoptive-storage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://xtrymind.github.io/tags/android/</link>
+      <pubDate>Wed, 09 Aug 2017 09:50:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Archlinux</title>
+      <link>https://xtrymind.github.io/tags/archlinux/</link>
+      <pubDate>Sun, 09 Apr 2017 15:45:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/archlinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bloatware</title>
+      <link>https://xtrymind.github.io/tags/bloatware/</link>
+      <pubDate>Tue, 04 Apr 2017 19:29:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/bloatware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Boot Manager</title>
+      <link>https://xtrymind.github.io/tags/boot-manager/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/boot-manager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bootloader</title>
+      <link>https://xtrymind.github.io/tags/bootloader/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/bootloader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flashtool</title>
+      <link>https://xtrymind.github.io/tags/flashtool/</link>
+      <pubDate>Wed, 22 Mar 2017 10:37:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/flashtool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geany</title>
+      <link>https://xtrymind.github.io/tags/geany/</link>
+      <pubDate>Fri, 24 Mar 2017 16:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/geany/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grub</title>
+      <link>https://xtrymind.github.io/tags/grub/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/grub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Inxi</title>
+      <link>https://xtrymind.github.io/tags/inxi/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/inxi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Libinput</title>
+      <link>https://xtrymind.github.io/tags/libinput/</link>
+      <pubDate>Wed, 22 Mar 2017 09:30:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/libinput/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://xtrymind.github.io/tags/linux/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>M4aqua</title>
+      <link>https://xtrymind.github.io/tags/m4aqua/</link>
+      <pubDate>Wed, 09 Aug 2017 09:50:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/m4aqua/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pacman</title>
+      <link>https://xtrymind.github.io/tags/pacman/</link>
+      <pubDate>Sun, 26 Mar 2017 17:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/pacman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Refind</title>
+      <link>https://xtrymind.github.io/tags/refind/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/refind/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sony</title>
+      <link>https://xtrymind.github.io/tags/sony/</link>
+      <pubDate>Wed, 09 Aug 2017 09:50:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/sony/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>System Informations</title>
+      <link>https://xtrymind.github.io/tags/system-informations/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/system-informations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Systemd Boot</title>
+      <link>https://xtrymind.github.io/tags/systemd-boot/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/systemd-boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://xtrymind.github.io/tags/tools/</link>
+      <pubDate>Sun, 26 Mar 2017 17:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Touchpad</title>
+      <link>https://xtrymind.github.io/tags/touchpad/</link>
+      <pubDate>Wed, 22 Mar 2017 09:30:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/touchpad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://xtrymind.github.io/tags/windows/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xperia</title>
+      <link>https://xtrymind.github.io/tags/xperia/</link>
+      <pubDate>Tue, 04 Apr 2017 19:29:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/tags/xperia/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

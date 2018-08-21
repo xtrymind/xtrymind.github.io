@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="incomplete, need a lot of thing to do
+Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD">
+
+<meta property="og:title" content="Dualboot archlinux &amp; windows 10 on Asus A46CB" />
+<meta property="og:description" content="incomplete, need a lot of thing to do
+Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/" /><meta property="article:published_time" content="2017-03-23T14:20:26&#43;07:00"/>
+<meta property="article:modified_time" content="2017-03-23T14:20:26&#43;07:00"/>
+
+<title>
+
+
+     Dualboot archlinux &amp; windows 10 on Asus A46CB 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.883800756%20%2b0700%20WIB%20m%3d%2b0.059196620">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.883800756%20%2b0700%20WIB%20m%3d%2b0.059196620">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.883800756%20%2b0700%20WIB%20m%3d%2b0.059196620">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.883800756%20%2b0700%20WIB%20m%3d%2b0.059196620">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Dualboot archlinux &amp; windows 10 on Asus A46CB
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Thu Mar 23 2017 14:20:26 WIB'>Mar 23, 2017</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>5 minutes read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p><code>incomplete, need a lot of thing to do</code></p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#archlinux-on-asus-a46cb">Archlinux on Asus A46CB</a>
+
+<ul>
+<li><a href="#before">Before</a></li>
+<li><a href="#partitioning">Partitioning</a></li>
+<li><a href="#format-and-mount-disks">Format and mount disks</a></li>
+<li><a href="#install-base-system">Install base system</a></li>
+<li><a href="#configure-base-system">Configure base system</a></li>
+<li><a href="#chroot">Chroot</a></li>
+<li><a href="#bootloader">Bootloader</a></li>
+<li><a href="#network">Network</a></li>
+<li><a href="#reboot">Reboot</a></li>
+<li><a href="#after-installation">After installation</a></li>
+<li><a href="#connect-to-the-internet">Connect to the internet</a></li>
+<li><a href="#user-management">User Management</a></li>
+<li><a href="#arch-user-repository">Arch User Repository</a></li>
+<li><a href="#mirror">Mirror</a></li>
+<li><a href="#graphics">Graphics</a>
+
+<ul>
+<li><a href="#driver">Driver</a></li>
+<li><a href="#xorg">Xorg</a></li>
+<li><a href="#bumblebee">Bumblebee</a></li>
+</ul></li>
+<li><a href="#terminal">Terminal</a></li>
+<li><a href="#touchpad">Touchpad</a></li>
+<li><a href="#sound">Sound</a></li>
+<li><a href="#disk">Hard Drive</a>
+
+<ul>
+<li><a href="#ssd">SSD</a></li>
+<li><a href="#hdapsd">HDAPSD</a>
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="archlinux-on-asus-a46cb">Archlinux on Asus A46CB</h1>
+
+<h3 id="before">Before</h3>
+
+<ol>
+<li>Disable Windows Fast-Startup</li>
+<li>Disable Secure Boot</li>
+</ol>
+
+<h3 id="partitioning">Partitioning</h3>
+
+<p>an example of Windows 10 Efi partitioning on 120GB SSD</p>
+
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th align="center">Location</th>
+<th align="center">Size</th>
+<th align="center">File system</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Recovery</td>
+<td align="center">sda1</td>
+<td align="center">450 MB</td>
+<td align="center">ntfs</td>
+</tr>
+
+<tr>
+<td>ESP</td>
+<td align="center">sda2</td>
+<td align="center">100 MB</td>
+<td align="center">vfat</td>
+</tr>
+
+<tr>
+<td>Reserved</td>
+<td align="center">sda3</td>
+<td align="center">16 MB</td>
+<td align="center">?</td>
+</tr>
+
+<tr>
+<td>Windows 10</td>
+<td align="center">sda4</td>
+<td align="center">53 GB</td>
+<td align="center">ntfs</td>
+</tr>
+
+<tr>
+<td>Arch</td>
+<td align="center">sda5</td>
+<td align="center">58 GB</td>
+<td align="center">ext4</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="format-and-mount-disks">Format and mount disks</h4>
+
+<pre><code class="language-shell_session">root # mkfs.ext4 /dev/sda5
+root # mount /dev/sda5 /mnt
+root # mkdir /mnt/boot
+root # mount /dev/sda2 /mnt/boot
+</code></pre>
+
+<h3 id="install-base-system">Install base system</h3>
+
+<pre><code class="language-shell_session">root # wifi-menu
+check connections
+root # ping  -c 3 www.google.com
+</code></pre>
+
+<p>install system and generate fstab</p>
+
+<pre><code class="language-shell_session">install base base development zsh and vim to /mnt 
+root # pacstrap /mnt base base-devel zsh vim
+generate new fstab
+root # genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<h3 id="configure-base-system">Configure base system</h3>
+
+<h4 id="chroot">Chroot</h4>
+
+<pre><code class="language-shell_session">enter chroot
+root # arch-chroot /mnt
+
+password for root
+root # passwd
+
+timezone
+root # ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+Hardware clock
+root # hwclock --systohc
+
+Locale
+root # vim /etc/locale.gen
+uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric system
+root # locale-gen
+root # echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+root # export LANG=en_US.UTF-8
+
+Hostname
+root # echo arch &gt; /etc/hostname
+</code></pre>
+
+<pre><code class="language-conf"># edit /etc/hosts
+ 127.0.0.1   localhost.localdomain   localhost
+ ::1         localhost.localdomain   localhost
+ 127.0.1.1   arch.localdomain        arch
+</code></pre>
+
+<h4 id="bootloader">Bootloader</h4>
+
+<pre><code class="language-shell_session">install intel ucode if you have intel processor
+root # pacman -S intel-ucode
+
+Initial ramdisk environment
+root # mkinitcpio -p linux
+
+install bootloader, using systemd-boot
+root # bootctl --path=/boot install
+
+check partuuid of / partition
+root # blkid -s PARTUUID -o value /dev/sdxY
+</code></pre>
+
+<pre><code class="language-conf"># Then add following content to /boot/loader/entries/arch.conf
+tittle    Arch
+linux     /vmlinuz-linux
+initrd    /initramfs-linux.img
+initrd    /intel-ucode.img
+options   root=PARTUUID=xxxxx-xxx-xx rw
+</code></pre>
+
+<pre><code class="language-conf"># change entries on /boot/loader/loader.conf
+timeout 5
+default arch
+</code></pre>
+
+<h4 id="network">Network</h4>
+
+<pre><code class="language-shell_session">Network configuration (Wi-Fi)
+root # pacman -S wpa_supplicant networkmanager dialog
+root # systemctl enable NetworkManager
+</code></pre>
+
+<p>Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add <code>options ath9k nohwcrypt=1</code> to <code>/etc/modprobe.d/ath9k.conf</code></p>
+
+<pre><code class="language-shell_session">root # echo options ath9k nohwcrypt=1 &gt;&gt; /etc/modprobe.d/ath9k.conf 
+</code></pre>
+
+<h4 id="reboot">Reboot</h4>
+
+<pre><code class="language-shell_session">root # exit
+root # umount -R /mnt
+root # reboot
+</code></pre>
+
+<h3 id="after-installation">After installation</h3>
+
+<h4 id="connect-to-the-internet">Connect to the internet</h4>
+
+<pre><code class="language-shell_session">root # nmtui
+root # ping google.co.id
+</code></pre>
+
+<h4 id="user-management">User Management</h4>
+
+<pre><code class="language-shell_session">add user
+root # useradd -m -G wheel,users -s /bin/zsh xtrymind
+root # passwd xtrymind
+
+enable sudo for users
+root # EDITOR=vim visudo
+</code></pre>
+
+<pre><code class="language-conf"># Uncomment this line in vim:
+%wheel ALL=(ALL) ALL
+</code></pre>
+
+<h4 id="mirror">Mirror</h4>
+
+<pre><code class="language-shell_session">best mirror
+users $ sudo pacman -S reflector
+users $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="language-conf"># enable 32bit support
+# In `/etc/pacman.conf`, uncomment:
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="language-shell_session">users $ sudo pacman -Sy
+</code></pre>
+
+<h4 id="display">Display</h4>
+
+<h4 id="driver">Driver</h4>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S nvidia mesa xf86-video-intel
+</code></pre>
+
+<h4 id="xorg">Xorg</h4>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
+</code></pre>
+
+<h4 id="bumblebee">Bumblebee</h4>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S bbswitch bumblebee
+users $ sudo gpasswd -a xtrymind bumblebee
+users $ sudo systemctl enable bumblebeed
+</code></pre>
+
+<pre><code class="language-shell_session">Reboot. After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
+users $ cat /proc/acpi/bbswitch
+0000:01:00.0 OFF
+</code></pre>
+
+<h4 id="wm">WM</h4>
+
+<p>install i3 as window manager</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S i3
+copy xinit to home dirrectory
+users $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+</code></pre>
+
+<pre><code class="language-conf"># open .xinitrc and delete started from twm &amp; to exec xterm and add
+exec i3
+</code></pre>
+
+<h4 id="terminal">Terminal</h4>
+
+<p>rxvt-unicode or urxvt is a nice terminal emulator, it&rsquo;s small and fast but a little complicated to configure</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S rxvt-unicode urxvt-perls
+</code></pre>
+
+<p>check <a href="https://wiki.archlinux.org/index.php/Rxvt-unicode">arch wiki</a> for more detail on how to configure urxvt.</p>
+
+<h4 id="touchpad">Touchpad</h4>
+
+<p>install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S libinput xf86-input-libinput
+</code></pre>
+
+<p>add <code>30-touchpad.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
+
+<pre><code class="language-shell_session">users $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+</code></pre>
+
+<pre><code class="language-conf">Section &quot;InputClass&quot;
+	Identifier &quot;touchpad&quot;
+	Driver &quot;libinput&quot;
+	MatchIsTouchpad &quot;on&quot;
+	Option &quot;Tapping&quot; &quot;on&quot;
+	Option &quot;Natural Scrolling&quot; &quot;on&quot;
+	Option &quot;Accel Speed&quot; &quot;0.5&quot;
+EndSection
+</code></pre>
+
+<h4 id="power-management">Power Management</h4>
+
+<h4 id="powertop">Powertop</h4>
+
+<p>install it by command</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S powertop
+</code></pre>
+
+<p>and add systemd service, create <code>/etc/systemd/system/powertop.service</code>`</p>
+
+<pre><code class="language-conf">[Unit]
+Description=Powertop tunings
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/powertop --auto-tune
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>then enable it</p>
+
+<pre><code class="language-shell_session">users $ sudo systemctl enable powertop.service
+</code></pre>
+
+<h4 id="laptop-mode">Laptop Mode</h4>
+
+<p>see this <a href="https://www.kernel.org/doc/Documentation/laptops/laptop-mode.txt">kernel documentation</a> about laptop mode, it help minimize the time that the hard disk needs to be spun up, to conserve battery power on laptops.</p>
+
+<p>create <code>/etc/sysctl.d/laptop.conf</code>
+and add :</p>
+
+<pre><code class="language-conf">vm.laptop_mode = 5
+</code></pre>
+
+<h4 id="disable-bluetooth">Disable Bluetooth</h4>
+
+<p>As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg caused by crappy ar9485 chipset mainly bluetooth module.</p>
+
+<pre><code class="language-shell">$ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
+$ [ 3515.096081] usb 2-3: device descriptor read/64, error -110
+</code></pre>
+
+<p>to disable it make <code>/etc/modprobe.d/bluetooth.conf</code></p>
+
+<pre><code class="language-conf"># disable bluetooth
+blacklist btusb bluetooth
+install btusb /bin/false
+install bluetooth /bin/false
+</code></pre>
+
+<h4 id="backlight">Backlight</h4>
+
+<p>The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S xorg-backlight
+</code></pre>
+
+<p>add <code>20-intel.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
+
+<pre><code class="language-shell_session">users $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
+</code></pre>
+
+<pre><code class="language-conf">Section &quot;Device&quot;
+	Identifier  &quot;Intel Graphics&quot;
+	Driver      &quot;intel&quot;
+	Option      &quot;DRI&quot; &quot;2&quot;             # DRI3 is now default
+	Option 		&quot;TearFree&quot; &quot;true&quot;
+	#Option      &quot;AccelMethod&quot;  &quot;sna&quot; # default
+	#Option      &quot;AccelMethod&quot;  &quot;uxa&quot; # fallback
+EndSection
+</code></pre>
+
+<p>Now, add commands to xbindkeys for manipulating the backlight:</p>
+
+<pre><code class="language-conf"># Backlight Inc
+&quot;/usr/bin/xbacklight -inc 5&quot;
+    m:0x0 + c:233
+    XF86MonBrightnessUp
+
+# Backligth Dec
+&quot;/usr/bin/xbacklight -dec 5&quot;
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+</code></pre>
+
+<h4 id="sound">Sound</h4>
+
+<p>Just install <code>alsa-utils</code>, and use <code>alsamixer</code> to unmute the master channel. Should just work.</p>
+
+<p>For keyboard hotkeys, add the following to <code>xbindkeys</code> configuration:</p>
+
+<pre><code class="language-conf"># Volume Up
+&quot;/usr/bin/amixer set Master 5%+&quot;
+   m:0x0 + c:123
+   XF86AudioRaiseVolume
+
+# VOlume Down
+&quot;/usr/bin/amixer set Master 5%-&quot;
+   m:0x0 + c:122
+   XF86AudioLowerVolume
+
+# Mute
+&quot;/usr/bin/amixer set Master toggle&quot;
+   m:0x0 + c:121
+   XF86AudioMute
+</code></pre>
+
+<h4 id="disk">Disk</h4>
+
+<h4 id="ssd">SSD</h4>
+
+<p>Enable trim support</p>
+
+<pre><code class="language-shell_session">users $ sudo systemctl enable fstrim.timer
+</code></pre>
+
+<h4 id="hdapsd">HDAPSD</h4>
+
+<p>Protects your hard drive from sudden shocks</p>
+
+<pre><code class="language-shell_session">users $ sudo pacman -S hdapsd
+users $ sudo systemctl enable hdapsd
+</code></pre>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://xtrymind.github.io/tags/archlinux">archlinux</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/windows">windows</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/linux">Linux</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

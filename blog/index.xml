@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on xtrymind</title>
+    <link>https://xtrymind.github.io/blog/</link>
+    <description>Recent content in Blog on xtrymind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 21 Aug 2018 05:30:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://xtrymind.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Epub Thumbnailer</title>
+      <link>https://xtrymind.github.io/blog/epub-thumbnailer/</link>
+      <pubDate>Tue, 21 Aug 2018 05:30:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/epub-thumbnailer/</guid>
+      <description>I have found this epub thumbnailer by chance and immediately fall in love as i have lots of epub on my drive without cover on it and also feel regrets why i didn&amp;rsquo;t meet this script sooner.
+To install this script is pretty easy, just run:
+$ sudo python install.py install  in epub-thumbnailer directory and viola, it&amp;rsquo;s done. Supported DE are:
+ Gnome xfce mate unity openbox enlightenment i3  if you use archlinux, then use python2</description>
+    </item>
+    
+    <item>
+      <title>Magisk for xiaomi (unofficial) treble device</title>
+      <link>https://xtrymind.github.io/blog/magisk-for-xiaomi-unofficial-treble-device/</link>
+      <pubDate>Wed, 11 Apr 2018 00:30:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/magisk-for-xiaomi-unofficial-treble-device/</guid>
+      <description>Update 2018-07-19 :
+Magisk finally support to mount vendor partition when it isn&amp;rsquo;t (real) vendor partition starting with Magisk beta 16.7
+For xiaomi devices with unofficial support of treble, it use unused /cust partition as /vendor partititon. As Magisk mount /vendor partition, it mount partition with name vendor, this won&amp;rsquo;t work on xiaomi devices with unofficial support of treble as it didn&amp;rsquo;t have /vendor partition.
+As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in magiskinit.</description>
+    </item>
+    
+    <item>
+      <title>Disable wakelock without root on Xiaomi Devices</title>
+      <link>https://xtrymind.github.io/blog/disable-wakelock-without-root-on-xiaomi-devices/</link>
+      <pubDate>Mon, 22 Jan 2018 12:57:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/disable-wakelock-without-root-on-xiaomi-devices/</guid>
+      <description>After succesfully configure BetterBatteryStats, it&amp;rsquo;s time to see what apps that has lots of wakelocks. Open BetterBatteryStats and go over Partial Wakelocks, you will see an apps that have wakelocks there.
+Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.
+{:height=&amp;ldquo;60%&amp;rdquo; width=&amp;ldquo;60%&amp;rdquo;}
+open cmd (if you&amp;rsquo;re on windows) or terminal (if you&amp;rsquo;re on linux) and enter adb shell, after that type this command: {% highlight shell_session %} users $ cmd appops set com.</description>
+    </item>
+    
+    <item>
+      <title>Use BetterBatteryStats on unrooted Xiaomi Devices</title>
+      <link>https://xtrymind.github.io/blog/use-betterbatterystats-on-unrooted-xiaomi-devices/</link>
+      <pubDate>Mon, 22 Jan 2018 06:46:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/use-betterbatterystats-on-unrooted-xiaomi-devices/</guid>
+      <description>BetterBatteryStats / XDA Version is one of my must install application on Android. Simply because it can tell me complete history on battery.
+If you have rooted your phone, then it&amp;rsquo;s piece of cake, BetterBatterStats( BBS ) will ask you to grant permission to view battery, but if you unrooted ( which is me because, **** you xiaomi ) you need to use adb to grant requested permission.
+On xiaomi device, you need to enable usb debugging and usb debugging (Security Settings) first.</description>
+    </item>
+    
+    <item>
+      <title>Mount luks encrypted partitions</title>
+      <link>https://xtrymind.github.io/blog/mount-luks-encrypted-partitions/</link>
+      <pubDate>Mon, 27 Nov 2017 07:28:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/mount-luks-encrypted-partitions/</guid>
+      <description>I have use old 80gb seagate as my drive for arch linux on pc, encrypted with luks and use lvm. After finished arch install on new hard drive, it&amp;rsquo;s time to copy file from old drive.
+see which partitions have been encrypted {% highlight shell_session %} root # blkid | grep crypto /dev/sdc2: UUID=&amp;ldquo;68b5a97c-9e39-4713-946b-4325ffbeec88&amp;rdquo; TYPE=&amp;ldquo;crypto_LUKS&amp;rdquo; PARTUUID=&amp;ldquo;fd09a229-c4fc-4f5d-b378-8bdcaf8e4d57&amp;rdquo; {% endhighlight %}
+open luks partition and set up mapper name {% highlight shell_session %} root # cryptsetup luksOpen /dev/sdc2/ vg0 Enter passphrase for /dev/sdc2: {% endhighlight %}</description>
+    </item>
+    
+    <item>
+      <title>Show Thumbnail on nautilus</title>
+      <link>https://xtrymind.github.io/blog/show-thumbnail-on-nautilus/</link>
+      <pubDate>Sat, 28 Oct 2017 11:37:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/show-thumbnail-on-nautilus/</guid>
+      <description>based on arch wiki, &amp;ldquo;There is an ongoing issue with totem (the video thumbnailer for Nautilus) on computers with Intel GPUs. It will crash if gstreamer-vaapi is installed&amp;rdquo;. to resolve this, install ffmpegthumbnailer and gst-libav
+{% highlight shell_session %} users $ sudo pacman -S ffmpegthumbnailer gst-libav users $ rm -r ~/.cache/thumbnails/fail users $ killall -q nautilus {% endhighlight %}
+thumbnail will be generated now.</description>
+    </item>
+    
+    <item>
+      <title>Bring back the backspace shortcut to nautilus</title>
+      <link>https://xtrymind.github.io/blog/bring-back-the-backspace-shortcut-to-nautilus/</link>
+      <pubDate>Fri, 20 Oct 2017 17:55:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/bring-back-the-backspace-shortcut-to-nautilus/</guid>
+      <description>On windows explorer when you want to go back to last place you have been, you&amp;rsquo;d press backspace on keyboard.
+On nautilus or gnome files, they set that shortcut by alt + arrow left, i&amp;rsquo;d like it to be one key or backspace again, but unfortunatelly nautilus didn&amp;rsquo;t offer to change shortcut.
+To change it to backspace, github user riclc create python extension to Brings back the Backspace shortcut to Nautilus using nautilus python.</description>
+    </item>
+    
+    <item>
+      <title>Mengganti lokasi default folder Downloads di Windows 10</title>
+      <link>https://xtrymind.github.io/blog/mengganti-lokasi-default-folder-downloads-di-windows-10/</link>
+      <pubDate>Tue, 26 Sep 2017 08:34:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/mengganti-lokasi-default-folder-downloads-di-windows-10/</guid>
+      <description>Lokasi default dari folder Downloads di Windows 10 adalah C:\Users\&amp;lt;username&amp;gt;\Downloads, bagi yang mempunyai kapasitas C: yang sedikit (misal ssd 120GB atau emmc ), tentu folder Downloads memakan banyak space hardisk (kalau sering download juga).
+untuk mengatasinya, folder default downloads bisa kita pindahkan ke hardisk atau partisi laing yang mempunyai kapasitas lebih besar, misal D:.
+ Klik kanan pada folder Downloads, pilih tab location dan klik Move&amp;hellip;  Pilih folder pengganti, misal D:\Downloads.</description>
+    </item>
+    
+    <item>
+      <title>Merged Wifi and Signal Bar</title>
+      <link>https://xtrymind.github.io/blog/merged-wifi-and-signal-bar/</link>
+      <pubDate>Wed, 09 Aug 2017 09:50:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/merged-wifi-and-signal-bar/</guid>
+      <description>Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi icon menyatu dengan signal icon. Karena Pexo cocoknya untuk M4Aqua dual sim (sebenernya tidak ada masalah dengan single sim, namun saya kurang nyaman he he) saya pindah lagi ke stock rom, dan saya ingin wifi saya menyatu dengan signal bar.
+Ketemu tutorialnya di sini langsung saja saya edit SystemUI nya.
+Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file /system/priv-app/systemui dan set permission rw-r--r-- atau 644 untuk octal nya.</description>
+    </item>
+    
+    <item>
+      <title>Sony Xperia M4Aqua Stock Kernel with SuperSu</title>
+      <link>https://xtrymind.github.io/blog/sony-xperia-m4aqua-stock-kernel-with-supersu/</link>
+      <pubDate>Fri, 26 May 2017 08:00:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/sony-xperia-m4aqua-stock-kernel-with-supersu/</guid>
+      <description>SuperSu offer zip file (to flash with twrp or other recovery) with a script to modify ramdisk and adding supersu to ramdisk to make it seamless root, but for some reason, it doesn&amp;rsquo;t work with Sony kernel (M4Aqua to be exact, i don&amp;rsquo;t know other device) .
+Some say, while sony ship it kernel with gzip format, it was modified so SuperSu can&amp;rsquo;t do it automatically. So we must use manual mode.</description>
+    </item>
+    
+    <item>
+      <title>Alternative way to set up python2 for Android Build on Arch Linux</title>
+      <link>https://xtrymind.github.io/blog/alternative-way-to-set-up-python2-for-android-build-on-arch-linux/</link>
+      <pubDate>Sun, 09 Apr 2017 15:45:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/alternative-way-to-set-up-python2-for-android-build-on-arch-linux/</guid>
+      <description>EDIT : there&amp;rsquo;s dirty trick on arch wiki to fix problem on venv
+Well, there&amp;rsquo;s not much to write here.
+arch linux guide on set up android build tool here is pretty much detailed on how to do it. but since android still use python2, and arch use python3 by default, you will have a little problem using python2 with venv.
+since it&amp;rsquo;s like that, i&amp;rsquo;m using this trick to set up python2 :</description>
+    </item>
+    
+    <item>
+      <title>Remove Bloatware on Sony Xperia M4Aqua</title>
+      <link>https://xtrymind.github.io/blog/remove-bloatware-on-sony-xperia-m4aqua/</link>
+      <pubDate>Tue, 04 Apr 2017 19:29:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/remove-bloatware-on-sony-xperia-m4aqua/</guid>
+      <description>Sony ship Marshmallow firmware with a lot of bloatware (not as lot as samsung though), it&amp;rsquo;s eat space, memory and battery life even though we don&amp;rsquo;t use it.
+if you already root you can always remove them one by one with link2sd, titanium backup or root explorer, but it&amp;rsquo;s take a lot of time doing it one by one.
+i&amp;rsquo;m make flashable zip to remove some of sony marshmallow bloatware, not all bloatware i remove because i&amp;rsquo;m still using some of it like gmail etc.</description>
+    </item>
+    
+    <item>
+      <title>Enable adoptive storage on Sony Xperia M4Aqua</title>
+      <link>https://xtrymind.github.io/blog/enable-adoptive-storage-on-sony-xperia-m4aqua/</link>
+      <pubDate>Sat, 01 Apr 2017 07:39:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/enable-adoptive-storage-on-sony-xperia-m4aqua/</guid>
+      <description>Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.
+well, if you want to read more : - Android - greenbot
+Sony comes up with Marshmallow (there won&amp;rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&amp;rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data).</description>
+    </item>
+    
+    <item>
+      <title>Bootloader / boot manager for your arch and windows dualboot installation</title>
+      <link>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</guid>
+      <description>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&amp;rsquo;s simple and fast but can&amp;rsquo;t use theme :3.
+here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
+systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
+    </item>
+    
+    <item>
+      <title>Pacserve, usefull tool for share pacman packages</title>
+      <link>https://xtrymind.github.io/blog/pacserve-usefull-tool-for-share-pacman-packages/</link>
+      <pubDate>Sun, 26 Mar 2017 17:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/pacserve-usefull-tool-for-share-pacman-packages/</guid>
+      <description>If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called pacserve
+To install pacserve you can add xyne repo or with aur, either way, it&amp;rsquo;s same.
+repo add xyne repo to /etc/pacman.conf
+[xyne-any] # A repo for Xyne&#39;s own projects: http://xyne.</description>
+    </item>
+    
+    <item>
+      <title>Inxi great cli system informations</title>
+      <link>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
+      <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
+install with command
+users $ sudo pacman -S inxi  first, run this command
+users $ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+    </item>
+    
+    <item>
+      <title>Fix geany warning of failed to load icon</title>
+      <link>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</link>
+      <pubDate>Fri, 24 Mar 2017 16:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</guid>
+      <description>If by any chance you came across geany problem of failed to load icon like
+(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that</description>
+    </item>
+    
+    <item>
+      <title>Dualboot archlinux &amp; windows 10 on Asus A46CB</title>
+      <link>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</link>
+      <pubDate>Thu, 23 Mar 2017 14:20:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</guid>
+      <description>incomplete, need a lot of thing to do
+Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD</description>
+    </item>
+    
+    <item>
+      <title>Hide windows partitions</title>
+      <link>https://xtrymind.github.io/blog/hide-windows-partitions/</link>
+      <pubDate>Wed, 22 Mar 2017 10:53:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/hide-windows-partitions/</guid>
+      <description>some people say it doesn&amp;rsquo;t matter but some people say it&amp;rsquo;s matter, YES.
+create /etc/udev/rules.d/99-hide-ntfs-partitions.rules
+KERNEL==&amp;quot;sda4&amp;quot;, ENV{UDISKS_IGNORE}=&amp;quot;1&amp;quot;  which sda4 is windows partition you want to hide
+users $ sudo udevadm trigger  </description>
+    </item>
+    
+    <item>
+      <title>Install Flashtool on Arch Linux</title>
+      <link>https://xtrymind.github.io/blog/install-flashtool-on-arch-linux/</link>
+      <pubDate>Wed, 22 Mar 2017 10:37:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/install-flashtool-on-arch-linux/</guid>
+      <description>Flashtool is a great tool to flash a firmware for your Sony Phone (and sony erriccson too) in case a new firmware come out and you don&amp;rsquo;t want to wait to receive it over OTA or you soft brick your phone.
+It includes XperiaFirm to download firmware instead of create bundle from sony software updates(on windows).
+Aur Manual way
+clone aur git clone https://aur.archlinux.org/xperia-flashtool.git
+users $ cd xperia-flashtool users $ makepkg -si  Using Pacaur</description>
+    </item>
+    
+    <item>
+      <title>Enable tap-to-click</title>
+      <link>https://xtrymind.github.io/blog/enable-tap-to-click/</link>
+      <pubDate>Wed, 22 Mar 2017 09:30:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/enable-tap-to-click/</guid>
+      <description>For me, it doesn&amp;rsquo;t feel nice to use touchpad buttons to click something, i&amp;rsquo;m prefer use touchpad area to click.
+you need to install libinput because synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated. {% highlight shell %} $ sudo pacman -S libinput xf86-input-libinput {% endhighlight %}
+add 30-touchpad.conf to /etc/X11/xorg.conf.d/: {% highlight shell %} $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf {% endhighlight %}</description>
+    </item>
+    
+  </channel>
+</rss>

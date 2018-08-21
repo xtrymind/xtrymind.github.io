@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archlinux on xtrymind</title>
+    <link>https://xtrymind.github.io/tags/archlinux/</link>
+    <description>Recent content in Archlinux on xtrymind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 09 Apr 2017 15:45:00 +0700</lastBuildDate>
+    
+	<atom:link href="https://xtrymind.github.io/tags/archlinux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Alternative way to set up python2 for Android Build on Arch Linux</title>
+      <link>https://xtrymind.github.io/blog/alternative-way-to-set-up-python2-for-android-build-on-arch-linux/</link>
+      <pubDate>Sun, 09 Apr 2017 15:45:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/alternative-way-to-set-up-python2-for-android-build-on-arch-linux/</guid>
+      <description>EDIT : there&amp;rsquo;s dirty trick on arch wiki to fix problem on venv
+Well, there&amp;rsquo;s not much to write here.
+arch linux guide on set up android build tool here is pretty much detailed on how to do it. but since android still use python2, and arch use python3 by default, you will have a little problem using python2 with venv.
+since it&amp;rsquo;s like that, i&amp;rsquo;m using this trick to set up python2 :</description>
+    </item>
+    
+    <item>
+      <title>Bootloader / boot manager for your arch and windows dualboot installation</title>
+      <link>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</link>
+      <pubDate>Fri, 31 Mar 2017 07:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</guid>
+      <description>I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB. My favorite so far is systemd-boot because it&amp;rsquo;s simple and fast but can&amp;rsquo;t use theme :3.
+here command to install your choice of boot manager for your dual boot installation. note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bios
+systemd-boot install intel-ucode if you use intel proc users $ pacman -S intel-ucode Initial ramdisk environment users $ mkinitcpio -p linux users $ bootctl --path=/boot install  Then add following content to /boot/loader/entries/arch.</description>
+    </item>
+    
+    <item>
+      <title>Pacserve, usefull tool for share pacman packages</title>
+      <link>https://xtrymind.github.io/blog/pacserve-usefull-tool-for-share-pacman-packages/</link>
+      <pubDate>Sun, 26 Mar 2017 17:44:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/pacserve-usefull-tool-for-share-pacman-packages/</guid>
+      <description>If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called pacserve
+To install pacserve you can add xyne repo or with aur, either way, it&amp;rsquo;s same.
+repo add xyne repo to /etc/pacman.conf
+[xyne-any] # A repo for Xyne&#39;s own projects: http://xyne.</description>
+    </item>
+    
+    <item>
+      <title>Inxi great cli system informations</title>
+      <link>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
+      <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
+install with command
+users $ sudo pacman -S inxi  first, run this command
+users $ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+    </item>
+    
+    <item>
+      <title>Fix geany warning of failed to load icon</title>
+      <link>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</link>
+      <pubDate>Fri, 24 Mar 2017 16:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</guid>
+      <description>If by any chance you came across geany problem of failed to load icon like
+(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that</description>
+    </item>
+    
+    <item>
+      <title>Dualboot archlinux &amp; windows 10 on Asus A46CB</title>
+      <link>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</link>
+      <pubDate>Thu, 23 Mar 2017 14:20:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</guid>
+      <description>incomplete, need a lot of thing to do
+Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD</description>
+    </item>
+    
+    <item>
+      <title>Install Flashtool on Arch Linux</title>
+      <link>https://xtrymind.github.io/blog/install-flashtool-on-arch-linux/</link>
+      <pubDate>Wed, 22 Mar 2017 10:37:00 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/install-flashtool-on-arch-linux/</guid>
+      <description>Flashtool is a great tool to flash a firmware for your Sony Phone (and sony erriccson too) in case a new firmware come out and you don&amp;rsquo;t want to wait to receive it over OTA or you soft brick your phone.
+It includes XperiaFirm to download firmware instead of create bundle from sony software updates(on windows).
+Aur Manual way
+clone aur git clone https://aur.archlinux.org/xperia-flashtool.git
+users $ cd xperia-flashtool users $ makepkg -si  Using Pacaur</description>
+    </item>
+    
+    <item>
+      <title>Enable tap-to-click</title>
+      <link>https://xtrymind.github.io/blog/enable-tap-to-click/</link>
+      <pubDate>Wed, 22 Mar 2017 09:30:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/enable-tap-to-click/</guid>
+      <description>For me, it doesn&amp;rsquo;t feel nice to use touchpad buttons to click something, i&amp;rsquo;m prefer use touchpad area to click.
+you need to install libinput because synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated. {% highlight shell %} $ sudo pacman -S libinput xf86-input-libinput {% endhighlight %}
+add 30-touchpad.conf to /etc/X11/xorg.conf.d/: {% highlight shell %} $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf {% endhighlight %}</description>
+    </item>
+    
+  </channel>
+</rss>

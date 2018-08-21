@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="If by any chance you came across geany problem of failed to load icon like
+(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that">
+
+<meta property="og:title" content="Fix geany warning of failed to load icon" />
+<meta property="og:description" content="If by any chance you came across geany problem of failed to load icon like
+(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/" /><meta property="article:published_time" content="2017-03-24T16:45:26&#43;07:00"/>
+<meta property="article:modified_time" content="2017-03-24T16:45:26&#43;07:00"/>
+
+<title>
+
+
+     Fix geany warning of failed to load icon 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.882853408%20%2b0700%20WIB%20m%3d%2b0.058249256">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.882853408%20%2b0700%20WIB%20m%3d%2b0.058249256">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.882853408%20%2b0700%20WIB%20m%3d%2b0.058249256">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.882853408%20%2b0700%20WIB%20m%3d%2b0.058249256">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Fix geany warning of failed to load icon
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Fri Mar 24 2017 16:45:26 WIB'>Mar 24, 2017</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>One minute read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                <p>If by any chance you came across geany problem of failed to load icon like</p>
+
+<pre><code class="language-shell_session">(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Gtk-WARNING **: Error loading theme icon 'geany-save-all'
+for stock: Icon 'geany-save-all' not present in theme
+
+(geany:2851): Gtk-WARNING **: Error loading theme icon 'geany-build' for
+stock: Icon 'geany-build' not present in theme
+</code></pre>
+
+<p>just run <code>gtk-update-icon-cache</code> hicolor icons to fix that</p>
+
+<pre><code class="language-shell_session">users $ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
+</code></pre>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://xtrymind.github.io/tags/archlinux">archlinux</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/geany">geany</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/linux">linux</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

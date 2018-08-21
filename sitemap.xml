@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/epub-thumbnailer/</loc>
+    <lastmod>2018-08-21T13:51:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/magisk-for-xiaomi-unofficial-treble-device/</loc>
+    <lastmod>2018-04-11T00:30:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/disable-wakelock-without-root-on-xiaomi-devices/</loc>
+    <lastmod>2018-01-22T12:57:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/use-betterbatterystats-on-unrooted-xiaomi-devices/</loc>
+    <lastmod>2018-01-22T06:46:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/mount-luks-encrypted-partitions/</loc>
+    <lastmod>2017-11-27T07:28:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/show-thumbnail-on-nautilus/</loc>
+    <lastmod>2017-10-28T11:37:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/bring-back-the-backspace-shortcut-to-nautilus/</loc>
+    <lastmod>2017-10-20T17:55:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/mengganti-lokasi-default-folder-downloads-di-windows-10/</loc>
+    <lastmod>2017-09-26T08:34:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/merged-wifi-and-signal-bar/</loc>
+    <lastmod>2017-08-09T09:50:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/sony-xperia-m4aqua-stock-kernel-with-supersu/</loc>
+    <lastmod>2017-05-26T08:00:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/alternative-way-to-set-up-python2-for-android-build-on-arch-linux/</loc>
+    <lastmod>2017-04-09T15:45:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/remove-bloatware-on-sony-xperia-m4aqua/</loc>
+    <lastmod>2017-04-04T19:29:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/enable-adoptive-storage-on-sony-xperia-m4aqua/</loc>
+    <lastmod>2017-04-01T07:39:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/bootloader-/-boot-manager-for-your-arch-and-windows-dualboot-installation/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/pacserve-usefull-tool-for-share-pacman-packages/</loc>
+    <lastmod>2017-03-26T17:44:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</loc>
+    <lastmod>2017-03-24T19:45:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</loc>
+    <lastmod>2017-03-24T16:45:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</loc>
+    <lastmod>2017-03-23T14:20:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/hide-windows-partitions/</loc>
+    <lastmod>2017-03-22T10:53:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/install-flashtool-on-arch-linux/</loc>
+    <lastmod>2017-03-22T10:37:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/enable-tap-to-click/</loc>
+    <lastmod>2017-03-22T09:30:26+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/adoptive-storage/</loc>
+    <lastmod>2017-04-01T07:39:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/android/</loc>
+    <lastmod>2017-08-09T09:50:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/archlinux/</loc>
+    <lastmod>2017-04-09T15:45:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/bloatware/</loc>
+    <lastmod>2017-04-04T19:29:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/blog/</loc>
+    <lastmod>2018-08-21T13:51:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/boot-manager/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/bootloader/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/flashtool/</loc>
+    <lastmod>2017-03-22T10:37:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/geany/</loc>
+    <lastmod>2017-03-24T16:45:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/grub/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/inxi/</loc>
+    <lastmod>2017-03-24T19:45:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/libinput/</loc>
+    <lastmod>2017-03-22T09:30:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/linux/</loc>
+    <lastmod>2017-03-24T19:45:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/m4aqua/</loc>
+    <lastmod>2017-08-09T09:50:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/pacman/</loc>
+    <lastmod>2017-03-26T17:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/refind/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/sony/</loc>
+    <lastmod>2017-08-09T09:50:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/system-informations/</loc>
+    <lastmod>2017-03-24T19:45:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/systemd-boot/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/</loc>
+    <lastmod>2017-04-01T07:39:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/tools/</loc>
+    <lastmod>2017-03-26T17:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/touchpad/</loc>
+    <lastmod>2017-03-22T09:30:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/windows/</loc>
+    <lastmod>2017-03-31T07:44:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/tags/xperia/</loc>
+    <lastmod>2017-04-04T19:29:26+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtrymind.github.io/</loc>
+    <lastmod>2018-08-21T13:51:00+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="For me, it doesn&rsquo;t feel nice to use touchpad buttons to click something, i&rsquo;m prefer use touchpad area to click.
+you need to install libinput because synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated. {% highlight shell %} $ sudo pacman -S libinput xf86-input-libinput {% endhighlight %}
+add 30-touchpad.conf to /etc/X11/xorg.conf.d/: {% highlight shell %} $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf {% endhighlight %}">
+
+<meta property="og:title" content="Enable tap-to-click" />
+<meta property="og:description" content="For me, it doesn&rsquo;t feel nice to use touchpad buttons to click something, i&rsquo;m prefer use touchpad area to click.
+you need to install libinput because synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated. {% highlight shell %} $ sudo pacman -S libinput xf86-input-libinput {% endhighlight %}
+add 30-touchpad.conf to /etc/X11/xorg.conf.d/: {% highlight shell %} $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf {% endhighlight %}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/enable-tap-to-click/" /><meta property="article:published_time" content="2017-03-22T09:30:26&#43;07:00"/>
+<meta property="article:modified_time" content="2017-03-22T09:30:26&#43;07:00"/>
+
+<title>
+
+
+     Enable tap-to-click 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/enable-tap-to-click/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.884020648%20%2b0700%20WIB%20m%3d%2b0.059416496">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.884020648%20%2b0700%20WIB%20m%3d%2b0.059416496">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.884020648%20%2b0700%20WIB%20m%3d%2b0.059416496">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.884020648%20%2b0700%20WIB%20m%3d%2b0.059416496">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Enable tap-to-click
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Mar 22 2017 09:30:26 WIB'>Mar 22, 2017</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>One minute read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                <p>For me, it doesn&rsquo;t feel nice to use touchpad buttons to click something, i&rsquo;m prefer use touchpad area to click.</p>
+
+<p>you need to install <code>libinput</code> because <code>synaptics</code> ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
+{% highlight shell %}
+$ sudo pacman -S libinput xf86-input-libinput
+{% endhighlight %}</p>
+
+<p>add <code>30-touchpad.conf</code> to <code>/etc/X11/xorg.conf.d/:</code>
+{% highlight shell %}
+$ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+{% endhighlight %}</p>
+
+<pre><code class="language-conf">Section &quot;InputClass&quot;
+	Identifier &quot;touchpad&quot;
+	Driver &quot;libinput&quot;
+	MatchIsTouchpad &quot;on&quot;
+	Option &quot;Tapping&quot; &quot;on&quot;
+	Option &quot;Natural Scrolling&quot; &quot;on&quot;
+	Option &quot;Accel Speed&quot; &quot;1&quot;
+EndSection
+</code></pre>
+
+<p>To enable it in current session without restart:
+{% highlight shell %}
+$ sudo libinput-list-devices<br />
+$ xinput list-props &ldquo;your touchpad devices&rdquo;</p>
+
+<p>#Enable tap-click<br />
+$ xinput set-prop &ldquo;your touchpad devices&rdquo; &ldquo;libinput Tapping Enabled&rdquo; 1
+{% endhighlight %}
+beside with <code>xorg.conf.d</code>, you can automatic enabled it on boot by set <code>xinput set-prop</code> on <code>xinitrc</code> or autostart program you use.</p>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="https://xtrymind.github.io/tags/archlinux">archlinux</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/touchpad">touchpad</a>
+                  
+                    <a href="https://xtrymind.github.io/tags/libinput">libinput</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="xtrymind">
+<meta name="description" content="Update 2018-07-19 :
+Magisk finally support to mount vendor partition when it isn&rsquo;t (real) vendor partition starting with Magisk beta 16.7
+For xiaomi devices with unofficial support of treble, it use unused /cust partition as /vendor partititon. As Magisk mount /vendor partition, it mount partition with name vendor, this won&rsquo;t work on xiaomi devices with unofficial support of treble as it didn&rsquo;t have /vendor partition.
+As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in magiskinit.">
+
+<meta property="og:title" content="Magisk for xiaomi (unofficial) treble device" />
+<meta property="og:description" content="Update 2018-07-19 :
+Magisk finally support to mount vendor partition when it isn&rsquo;t (real) vendor partition starting with Magisk beta 16.7
+For xiaomi devices with unofficial support of treble, it use unused /cust partition as /vendor partititon. As Magisk mount /vendor partition, it mount partition with name vendor, this won&rsquo;t work on xiaomi devices with unofficial support of treble as it didn&rsquo;t have /vendor partition.
+As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in magiskinit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/blog/magisk-for-xiaomi-unofficial-treble-device/" /><meta property="article:published_time" content="2018-04-11T00:30:00&#43;07:00"/>
+<meta property="article:modified_time" content="2018-04-11T00:30:00&#43;07:00"/>
+
+<title>
+
+
+     Magisk for xiaomi (unofficial) treble device 
+
+</title>
+<link rel="canonical" href="https://xtrymind.github.io/blog/magisk-for-xiaomi-unofficial-treble-device/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-21%2014%3a21%3a00.873803703%20%2b0700%20WIB%20m%3d%2b0.049199524">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-21%2014%3a21%3a00.873803703%20%2b0700%20WIB%20m%3d%2b0.049199524">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-21%2014%3a21%3a00.873803703%20%2b0700%20WIB%20m%3d%2b0.049199524">
+    
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-21%2014%3a21%3a00.873803703%20%2b0700%20WIB%20m%3d%2b0.049199524">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://xtrymind.github.io/img/leaf.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://xtrymind.github.io/"><div class="name">xtrymind</div></a>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://xtrymind.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://xtrymind.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+            <a href="//twitter.com/xtrymind" target="_blank" rel="noopener"><img class="icon" src="https://xtrymind.github.io/img/twitter.svg" alt="twitter" /></a>
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:xtrymind@gmail.com"><img class="icon" src="https://xtrymind.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Magisk for xiaomi (unofficial) treble device
+
+</div>
+
+                    <div class="initials"><a href="https://xtrymind.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Apr 11 2018 00:30:00 WIB'>Apr 11, 2018</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>One minute read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                <p>Update 2018-07-19 :</p>
+
+<p>Magisk finally support to mount vendor partition when it isn&rsquo;t (real) vendor partition starting with <a href="https://forum.xda-developers.com/showpost.php?p=77108384&amp;postcount=44">Magisk beta 16.7</a></p>
+
+<hr />
+
+<p>For xiaomi devices with unofficial support of treble, it use unused <code>/cust</code> partition as <code>/vendor</code> partititon. As Magisk mount <code>/vendor</code> partition, it mount partition with name vendor, this won&rsquo;t work on xiaomi devices with unofficial support of treble as it didn&rsquo;t have <code>/vendor</code> partition.</p>
+
+<p>As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in <code>magiskinit.c</code> so it will mount <code>/cust</code> partition as vendor.</p>
+
+<p>not there&rsquo;s pull request by TheScarastic about mount cust as vendor <a href="https://github.com/topjohnwu/Magisk/pull/373/">link</a> now we shall wait until it merge to magisk.</p>
+
+<p>This is just self compiled Magisk with above code applied.</p>
+
+<p>Latest Magisk :
+ - <a href="https://www.androidfilehost.com/?fid=5862345805528051322">v16.6(1664)</a></p>
+
+<p>Stable build :
+ - <a href="https://drive.google.com/a/my.smccd.edu/uc?id=1zb_2Z4S2x5291ZXtfMhcNI01u2UDDKrR&amp;export=download">v16.0</a> by <a href="https://forum.xda-developers.com/member.php?u=6070905">abhishek987</a></p>
+
+<p>Beta build :
+ - <a href="https://www.dropbox.com/s/c0pkqvdwjikypke/Magisk-v16.3-cust.zip?dl=0">v16.3(1650)</a>
+ - <a href="https://www.dropbox.com/s/mwv04ge2br19knc/Magisk-v16.3%281660%29.zip?dl=0">v16.3(1660)</a>
+ - <a href="https://www.dropbox.com/s/2hua5u3zhgm1rqo/Magisk-v16.4.zip?dl=0">v16.4(1642)</a>
+ - <a href="https://www.dropbox.com/s/1uzzvljurqzz8pt/Magisk-v16.4%281643%29.zip?dl=0">v16.4(1643)</a>
+ - <a href="https://www.androidfilehost.com/?fid=5862345805528050384">v16.6(1664)</a>
+ - <a href="https://www.androidfilehost.com/?fid=5862345805528051322">v16.6(1664)</a></p>
+
+                <br>
+                
+                <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

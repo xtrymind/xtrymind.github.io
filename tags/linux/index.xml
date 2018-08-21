@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on xtrymind</title>
+    <link>https://xtrymind.github.io/tags/linux/</link>
+    <description>Recent content in Linux on xtrymind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 24 Mar 2017 19:45:26 +0700</lastBuildDate>
+    
+	<atom:link href="https://xtrymind.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Inxi great cli system informations</title>
+      <link>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</link>
+      <pubDate>Fri, 24 Mar 2017 19:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
+      <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
+install with command
+users $ sudo pacman -S inxi  first, run this command
+users $ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+    </item>
+    
+    <item>
+      <title>Fix geany warning of failed to load icon</title>
+      <link>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</link>
+      <pubDate>Fri, 24 Mar 2017 16:45:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/</guid>
+      <description>If by any chance you came across geany problem of failed to load icon like
+(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that</description>
+    </item>
+    
+    <item>
+      <title>Dualboot archlinux &amp; windows 10 on Asus A46CB</title>
+      <link>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</link>
+      <pubDate>Thu, 23 Mar 2017 14:20:26 +0700</pubDate>
+      
+      <guid>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</guid>
+      <description>incomplete, need a lot of thing to do
+Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD</description>
+    </item>
+    
+  </channel>
+</rss>
