@@ -4,7 +4,6 @@ comments: true
 title:  "Sony Xperia M4Aqua Stock Kernel with SuperSu"
 date:   2017-05-26 08:00:00 +0700
 author: Dede Dindin Qudsy
-tags:   [android,sony,m4aqua]
 last_modified_at: 2017-10-03 21:28:00 +0700
 desc_update: "Add SuperSu 2.82 SR5"
 ---

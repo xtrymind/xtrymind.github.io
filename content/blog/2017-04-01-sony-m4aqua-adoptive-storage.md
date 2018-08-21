@@ -4,7 +4,6 @@ comments: true
 title:  "Enable adoptive storage on Sony Xperia M4Aqua"
 date:   2017-04-01 07:39:26 +0700
 author: Dede Dindin Qudsy
-tags:   [android,sony,xperia,m4aqua,adoptive storage]
 last_modified_at: 2017-04-06 10:53:00 +0700
 ---
 Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.

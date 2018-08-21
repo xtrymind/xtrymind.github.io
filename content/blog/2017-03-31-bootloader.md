@@ -4,7 +4,6 @@ comments: true
 title:  "Bootloader / boot manager for your arch and windows dualboot installation"
 date:   2017-03-31 07:44:26 +0700
 author: Dede Dindin Qudsy
-tags:   [archlinux, bootloader,boot manager, windows, grub, systemd-boot, refind]
 ---
 I have only test 3 boot manager for my dual boot installation, which is systemd-boot, rEFInd, and GRUB.
 My favorite so far is systemd-boot because it's simple and fast but can't use theme :3. 

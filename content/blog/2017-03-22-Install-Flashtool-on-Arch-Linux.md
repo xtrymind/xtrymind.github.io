@@ -4,7 +4,6 @@ comments: true
 title:  "Install Flashtool on Arch Linux"
 date:   2017-03-22 10:37:00 +0700
 author: Dede Dindin Qudsy
-tags:   [archlinux, flashtool, sony, android, xperia, m4aqua]
 last_modified_at: 2017-09-22 08:16:00 +0700
 ---
 Flashtool is a great tool to flash a firmware for your Sony Phone (and sony erriccson too) in case a new firmware come out and you don't want to wait to receive it over OTA or you soft brick your phone.

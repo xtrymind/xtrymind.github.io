@@ -4,7 +4,6 @@ comments: true
 title:  "Alternative way to set up python2 for Android Build on Arch Linux"
 date:   2017-04-09 15:45:00 +0700
 author: Dede Dindin Qudsy
-tags:   [android,archlinux]
 last_modified_at: 2017-10-28 11:58:00 +0700
 desc_update: "change android build to python2"
 ---

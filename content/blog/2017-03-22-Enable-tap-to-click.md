@@ -4,7 +4,6 @@ comments: true
 title:  "Enable tap-to-click"
 date:   2017-03-22 09:30:26 +0700
 author: Dede Dindin Qudsy
-tags:   [archlinux, touchpad, libinput]
 last_modified_at: 2018-04-06 06:12:00 +0700
 desc_update: "change config"
 ---

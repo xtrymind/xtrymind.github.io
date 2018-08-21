@@ -4,7 +4,6 @@ comments: true
 title:  "Remove Bloatware on Sony Xperia M4Aqua"
 date:   2017-04-04 19:29:26 +0700
 author: Dede Dindin Qudsy
-tags:   [android,sony,xperia,m4aqua,bloatware]
 last_modified_at: 2017-04-06 13:53:00 +0700
 ---
 Sony ship Marshmallow firmware with a lot of bloatware (not as lot as samsung though), it's eat space, memory and battery life even though we don't use it.
