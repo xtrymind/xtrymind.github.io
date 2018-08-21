@@ -13,6 +13,7 @@ SuperSu offer zip file (to flash with twrp or other recovery) with a script to m
 Some say, while sony ship it kernel with gzip format, it was modified so SuperSu can't do it automatically. So we must use manual mode. this post will update when a new SuperSu version come out.
 
 Download :
+
  - [V2.82 SR5](https://www.androidfilehost.com/?fid=962021903579482197)
  - [V2.82 SR4](https://www.androidfilehost.com/?fid=961840155545598307)
  - [V2.82](https://www.androidfilehost.com/?fid=745425885120737685)

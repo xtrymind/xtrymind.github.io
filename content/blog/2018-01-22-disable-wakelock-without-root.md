@@ -11,20 +11,20 @@ After succesfully configure [BetterBatteryStats](use-bbs-non-root.html), it's ti
 
 Example on my phone, six hour after installing BetterBatteryStats, Twitter apps have a lots of wakelocks for over 4 minutes, we can see it activity is analytics so we can safely disable this wakelocks.
 
-![Imgur](https://i.imgur.com/vadkMvL.png){:height="60%" width="60%"}
+![Imgur](https://i.imgur.com/vadkMvL.png)
 
 open cmd (if you're on windows) or terminal (if you're on linux) and enter adb shell, after that type this command:
-{% highlight shell_session %}
-users $ cmd appops set com.android.application WAKE_LOCK ignore
-{% endhighlight %}
+```
+$ cmd appops set com.android.application WAKE_LOCK ignore
+```
 
 for Twitter apps, it should be 
-{% highlight shell_session %}
-users $ cmd appops set com.twitter.android WAKE_LOCK ignore
-{% endhighlight %}
+```
+$ cmd appops set com.twitter.android WAKE_LOCK ignore
+```
 
 after that, all wakelocks requests by the app or in case above Twitter app, will be ignored by the Android system
 
-![Imgur](https://i.imgur.com/EOR9nA8.png){:height="60%" width="60%"}
+![Imgur](https://i.imgur.com/EOR9nA8.png)
 
 Source: [XDA](https://www.xda-developers.com/stop-wakelocks-android-without-root/)
