@@ -33,16 +33,5 @@ $ inxi --recommend  that command will check application dependencies + recommend
 (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that</description>
     </item>
     
-    <item>
-      <title>Dualboot archlinux &amp; windows 10 on Asus A46CB</title>
-      <link>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</link>
-      <pubDate>Thu, 23 Mar 2017 14:20:26 +0700</pubDate>
-      
-      <guid>https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/</guid>
-      <description>incomplete, need a lot of thing to do
-Table of Contents
- Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD</description>
-    </item>
-    
   </channel>
 </rss>

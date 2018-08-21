@@ -9,13 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="xtrymind">
-<meta name="description" content="incomplete, need a lot of thing to do
-Table of Contents
+<meta name="description" content="Table of Contents
  Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD">
 
 <meta property="og:title" content="Dualboot archlinux &amp; windows 10 on Asus A46CB" />
-<meta property="og:description" content="incomplete, need a lot of thing to do
-Table of Contents
+<meta property="og:description" content="Table of Contents
  Archlinux on Asus A46CB  Before Partitioning Format and mount disks Install base system Configure base system Chroot Bootloader Network Reboot After installation Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee  Terminal Touchpad Sound Hard Drive  SSD HDAPSD     Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xtrymind.github.io/blog/dualboot-archlinux--windows-10-on-asus-a46cb/" /><meta property="article:published_time" content="2017-03-23T14:20:26&#43;07:00"/>
@@ -45,11 +43,11 @@ Table of Contents
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2004%3a51%3a07.427404285%20%2b0700%20WIB%20m%3d%2b0.052481430">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2004%3a51%3a07.427404285%20%2b0700%20WIB%20m%3d%2b0.052481430">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2004%3a51%3a07.427404285%20%2b0700%20WIB%20m%3d%2b0.052481430">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2005%3a48%3a56.162686981%20%2b0700%20WIB%20m%3d%2b0.058504214">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2005%3a48%3a56.162686981%20%2b0700%20WIB%20m%3d%2b0.058504214">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2005%3a48%3a56.162686981%20%2b0700%20WIB%20m%3d%2b0.058504214">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2004%3a51%3a07.427404285%20%2b0700%20WIB%20m%3d%2b0.052481430">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2005%3a48%3a56.162686981%20%2b0700%20WIB%20m%3d%2b0.058504214">
     
 
 
@@ -158,8 +156,6 @@ Table of Contents
             <div class="markdown">
                 
 
-<p><code>incomplete, need a lot of thing to do</code></p>
-
 <p><strong>Table of Contents</strong></p>
 
 <ul>
@@ -263,75 +259,63 @@ Table of Contents
 
 <h4 id="format-and-mount-disks">Format and mount disks</h4>
 
-<pre><code class="language-shell_session">root # mkfs.ext4 /dev/sda5
-root # mount /dev/sda5 /mnt
-root # mkdir /mnt/boot
-root # mount /dev/sda2 /mnt/boot
+<pre><code class="language-shell"># mkfs.ext4 /dev/sda5
+# mount /dev/sda5 /mnt
+# mkdir /mnt/boot
+# mount /dev/sda2 /mnt/boot
 </code></pre>
 
 <h3 id="install-base-system">Install base system</h3>
 
-<pre><code class="language-shell_session">root # wifi-menu
-check connections
-root # ping  -c 3 www.google.com
+<pre><code class="language-shell"># wifi-menu
+# ping  -c 3 www.google.com #check connections
 </code></pre>
 
 <p>install system and generate fstab</p>
 
-<pre><code class="language-shell_session">install base base development zsh and vim to /mnt 
-root # pacstrap /mnt base base-devel zsh vim
-generate new fstab
-root # genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<pre><code class="language-shell"># pacstrap /mnt base base-devel zsh vim #install base base development zsh and vim to /mnt 
+# genfstab -U /mnt &gt;&gt; /mnt/etc/fstab #generate new fstab
 </code></pre>
 
 <h3 id="configure-base-system">Configure base system</h3>
 
 <h4 id="chroot">Chroot</h4>
 
-<pre><code class="language-shell_session">enter chroot
-root # arch-chroot /mnt
+<pre><code class="language-shell"># arch-chroot /mnt #enter chroot
 
-password for root
-root # passwd
+# passwd #password for root
 
-timezone
-root # ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-Hardware clock
-root # hwclock --systohc
+# ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime #timezone
+# hwclock --systohc #Hardware clock
 
-Locale
-root # vim /etc/locale.gen
-uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric system
-root # locale-gen
-root # echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
-root # export LANG=en_US.UTF-8
 
-Hostname
-root # echo arch &gt; /etc/hostname
+# vim /etc/locale.gen #uncomment `en_US.UTF-8`
+# locale-gen #generate locale
+# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+# export LANG=en_US.UTF-8
+
+
+# echo arch &gt; /etc/hostname #Hostname
 </code></pre>
 
-<pre><code class="language-conf"># edit /etc/hosts
- 127.0.0.1   localhost.localdomain   localhost
- ::1         localhost.localdomain   localhost
- 127.0.1.1   arch.localdomain        arch
+<pre><code># edit /etc/hosts
+127.0.0.1   localhost.localdomain   localhost
+::1         localhost.localdomain   localhost
+127.0.1.1   arch.localdomain        arch
 </code></pre>
 
 <h4 id="bootloader">Bootloader</h4>
 
-<pre><code class="language-shell_session">install intel ucode if you have intel processor
-root # pacman -S intel-ucode
+<pre><code class="language-shell"># pacman -S intel-ucode #install intel ucode if you have intel processor
 
-Initial ramdisk environment
-root # mkinitcpio -p linux
+# mkinitcpio -p linux #Initial ramdisk environment
 
-install bootloader, using systemd-boot
-root # bootctl --path=/boot install
+# bootctl --path=/boot install #install bootloader, using systemd-boot
 
-check partuuid of / partition
-root # blkid -s PARTUUID -o value /dev/sdxY
+# blkid -s PARTUUID -o value /dev/sdxY #check partuuid of / partition
 </code></pre>
 
-<pre><code class="language-conf"># Then add following content to /boot/loader/entries/arch.conf
+<pre><code># Then add following content to /boot/loader/entries/arch.conf
 tittle    Arch
 linux     /vmlinuz-linux
 initrd    /initramfs-linux.img
@@ -339,89 +323,91 @@ initrd    /intel-ucode.img
 options   root=PARTUUID=xxxxx-xxx-xx rw
 </code></pre>
 
-<pre><code class="language-conf"># change entries on /boot/loader/loader.conf
+<pre><code># change entries on /boot/loader/loader.conf
 timeout 5
 default arch
 </code></pre>
 
 <h4 id="network">Network</h4>
 
-<pre><code class="language-shell_session">Network configuration (Wi-Fi)
-root # pacman -S wpa_supplicant networkmanager dialog
-root # systemctl enable NetworkManager
+<p>Network configuration (Wi-Fi)</p>
+
+<pre><code class="language-shell"># pacman -S wpa_supplicant networkmanager dialog
+# systemctl enable NetworkManager
 </code></pre>
 
 <p>Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add <code>options ath9k nohwcrypt=1</code> to <code>/etc/modprobe.d/ath9k.conf</code></p>
 
-<pre><code class="language-shell_session">root # echo options ath9k nohwcrypt=1 &gt;&gt; /etc/modprobe.d/ath9k.conf 
+<pre><code class="language-shell"># echo options ath9k nohwcrypt=1 &gt;&gt; /etc/modprobe.d/ath9k.conf 
 </code></pre>
 
 <h4 id="reboot">Reboot</h4>
 
-<pre><code class="language-shell_session">root # exit
-root # umount -R /mnt
-root # reboot
+<pre><code class="language-shell"># exit
+# umount -R /mnt
+# reboot
 </code></pre>
 
 <h3 id="after-installation">After installation</h3>
 
 <h4 id="connect-to-the-internet">Connect to the internet</h4>
 
-<pre><code class="language-shell_session">root # nmtui
-root # ping google.co.id
+<pre><code class="language-shell"># nmtui
+# ping google.co.id
 </code></pre>
 
 <h4 id="user-management">User Management</h4>
 
-<pre><code class="language-shell_session">add user
-root # useradd -m -G wheel,users -s /bin/zsh xtrymind
-root # passwd xtrymind
+<pre><code class="language-shell"># useradd -m -G wheel,users -s /bin/zsh xtrymind #add user
+# passwd xtrymind
 
-enable sudo for users
-root # EDITOR=vim visudo
+# EDITOR=vim visudo #enable sudo for users
 </code></pre>
 
-<pre><code class="language-conf"># Uncomment this line in vim:
+<pre><code class="language-ini"># Uncomment this line in vim:
 %wheel ALL=(ALL) ALL
 </code></pre>
 
 <h4 id="mirror">Mirror</h4>
 
-<pre><code class="language-shell_session">best mirror
-users $ sudo pacman -S reflector
-users $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+<p>best mirror</p>
+
+<pre><code class="language-shell">$ sudo pacman -S reflector
+$ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 
-<pre><code class="language-conf"># enable 32bit support
-# In `/etc/pacman.conf`, uncomment:
+<p>enable 32bit support</p>
+
+<pre><code class="language-ini"># In `/etc/pacman.conf`, uncomment:
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 </code></pre>
 
-<pre><code class="language-shell_session">users $ sudo pacman -Sy
+<pre><code class="language-shell">$ sudo pacman -Sy
 </code></pre>
 
 <h4 id="display">Display</h4>
 
 <h4 id="driver">Driver</h4>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S nvidia mesa xf86-video-intel
+<pre><code class="language-shell">$ sudo pacman -S nvidia mesa xf86-video-intel
 </code></pre>
 
 <h4 id="xorg">Xorg</h4>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
+<pre><code class="language-shell">$ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
 </code></pre>
 
 <h4 id="bumblebee">Bumblebee</h4>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S bbswitch bumblebee
-users $ sudo gpasswd -a xtrymind bumblebee
-users $ sudo systemctl enable bumblebeed
+<pre><code class="language-shell">$ sudo pacman -S bbswitch bumblebee
+$ sudo gpasswd -a xtrymind bumblebee
+$ sudo systemctl enable bumblebeed
 </code></pre>
 
-<pre><code class="language-shell_session">Reboot. After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
-users $ cat /proc/acpi/bbswitch
+<p>After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop</p>
+
+<pre><code class="language-shell">$ cat /proc/acpi/bbswitch
 0000:01:00.0 OFF
 </code></pre>
 
@@ -429,12 +415,11 @@ users $ cat /proc/acpi/bbswitch
 
 <p>install i3 as window manager</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S i3
-copy xinit to home dirrectory
-users $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+<pre><code class="language-shell">$ sudo pacman -S i3
+$ cp /etc/X11/xinit/xinitrc ~/.xinitrc #copy xinit to home dirrectory
 </code></pre>
 
-<pre><code class="language-conf"># open .xinitrc and delete started from twm &amp; to exec xterm and add
+<pre><code class="language-ini"># open .xinitrc and delete started from twm &amp; to exec xterm and add
 exec i3
 </code></pre>
 
@@ -442,7 +427,7 @@ exec i3
 
 <p>rxvt-unicode or urxvt is a nice terminal emulator, it&rsquo;s small and fast but a little complicated to configure</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S rxvt-unicode urxvt-perls
+<pre><code class="language-shell">$ sudo pacman -S rxvt-unicode urxvt-perls
 </code></pre>
 
 <p>check <a href="https://wiki.archlinux.org/index.php/Rxvt-unicode">arch wiki</a> for more detail on how to configure urxvt.</p>
@@ -451,15 +436,15 @@ exec i3
 
 <p>install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S libinput xf86-input-libinput
+<pre><code class="language-shell">$ sudo pacman -S libinput xf86-input-libinput
 </code></pre>
 
 <p>add <code>30-touchpad.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
 
-<pre><code class="language-shell_session">users $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+<pre><code class="language-shell">$ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
 </code></pre>
 
-<pre><code class="language-conf">Section &quot;InputClass&quot;
+<pre><code>Section &quot;InputClass&quot;
 	Identifier &quot;touchpad&quot;
 	Driver &quot;libinput&quot;
 	MatchIsTouchpad &quot;on&quot;
@@ -475,12 +460,12 @@ EndSection
 
 <p>install it by command</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S powertop
+<pre><code class="language-shell">$ sudo pacman -S powertop
 </code></pre>
 
 <p>and add systemd service, create <code>/etc/systemd/system/powertop.service</code>`</p>
 
-<pre><code class="language-conf">[Unit]
+<pre><code>[Unit]
 Description=Powertop tunings
 
 [Service]
@@ -493,7 +478,7 @@ WantedBy=multi-user.target
 
 <p>then enable it</p>
 
-<pre><code class="language-shell_session">users $ sudo systemctl enable powertop.service
+<pre><code class="language-shell">$ sudo systemctl enable powertop.service
 </code></pre>
 
 <h4 id="laptop-mode">Laptop Mode</h4>
@@ -503,7 +488,7 @@ WantedBy=multi-user.target
 <p>create <code>/etc/sysctl.d/laptop.conf</code>
 and add :</p>
 
-<pre><code class="language-conf">vm.laptop_mode = 5
+<pre><code>vm.laptop_mode = 5
 </code></pre>
 
 <h4 id="disable-bluetooth">Disable Bluetooth</h4>
@@ -516,7 +501,7 @@ $ [ 3515.096081] usb 2-3: device descriptor read/64, error -110
 
 <p>to disable it make <code>/etc/modprobe.d/bluetooth.conf</code></p>
 
-<pre><code class="language-conf"># disable bluetooth
+<pre><code># disable bluetooth
 blacklist btusb bluetooth
 install btusb /bin/false
 install bluetooth /bin/false
@@ -526,15 +511,15 @@ install bluetooth /bin/false
 
 <p>The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S xorg-backlight
+<pre><code class="language-shell">$ sudo pacman -S xorg-backlight
 </code></pre>
 
 <p>add <code>20-intel.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
 
-<pre><code class="language-shell_session">users $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
+<pre><code class="language-shell">$ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
 </code></pre>
 
-<pre><code class="language-conf">Section &quot;Device&quot;
+<pre><code>Section &quot;Device&quot;
 	Identifier  &quot;Intel Graphics&quot;
 	Driver      &quot;intel&quot;
 	Option      &quot;DRI&quot; &quot;2&quot;             # DRI3 is now default
@@ -546,7 +531,7 @@ EndSection
 
 <p>Now, add commands to xbindkeys for manipulating the backlight:</p>
 
-<pre><code class="language-conf"># Backlight Inc
+<pre><code># Backlight Inc
 &quot;/usr/bin/xbacklight -inc 5&quot;
     m:0x0 + c:233
     XF86MonBrightnessUp
@@ -563,7 +548,7 @@ EndSection
 
 <p>For keyboard hotkeys, add the following to <code>xbindkeys</code> configuration:</p>
 
-<pre><code class="language-conf"># Volume Up
+<pre><code># Volume Up
 &quot;/usr/bin/amixer set Master 5%+&quot;
    m:0x0 + c:123
    XF86AudioRaiseVolume
@@ -585,30 +570,18 @@ EndSection
 
 <p>Enable trim support</p>
 
-<pre><code class="language-shell_session">users $ sudo systemctl enable fstrim.timer
+<pre><code class="language-shell">$ sudo systemctl enable fstrim.timer
 </code></pre>
 
 <h4 id="hdapsd">HDAPSD</h4>
 
 <p>Protects your hard drive from sudden shocks</p>
 
-<pre><code class="language-shell_session">users $ sudo pacman -S hdapsd
-users $ sudo systemctl enable hdapsd
+<pre><code class="language-shell">$ sudo pacman -S hdapsd
+$ sudo systemctl enable hdapsd
 </code></pre>
 
                 <br>
-                
-                  <div class="tags">
-                    <strong>Tags:</strong>
-                  
-                    <a href="https://xtrymind.github.io/tags/archlinux">archlinux</a>
-                  
-                    <a href="https://xtrymind.github.io/tags/windows">windows</a>
-                  
-                    <a href="https://xtrymind.github.io/tags/linux">Linux</a>
-                  
-                  </div>
-                  <br />
                 
                 <p class="back-to-posts"><a href="https://xtrymind.github.io/blog">Back to posts</a></p>
             </div>
