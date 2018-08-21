@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Hide windows partitions"
-date:   2017-03-22 10:53 +0700
+date:   2017-03-22 10:53:00 +0700
 author: Dede Dindin Qudsy
 ---
 some people say it doesn't matter but some people say it's matter, YES.

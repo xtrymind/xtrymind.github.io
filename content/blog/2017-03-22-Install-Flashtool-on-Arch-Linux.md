@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Install Flashtool on Arch Linux"
-date:   2017-03-22 10:37 +0700
+date:   2017-03-22 10:37:00 +0700
 author: Dede Dindin Qudsy
 tags:   [archlinux, flashtool, sony, android, xperia, m4aqua]
 last_modified_at: 2017-09-22 08:16:00 +0700
