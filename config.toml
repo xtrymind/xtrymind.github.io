@@ -10,6 +10,7 @@ author              = "Dede Dindin Qudsy"
 title               = "xtrymind"
 pygmentsuseclasses  = true
 pluralizelisttitles = false
+googleAnalytics     = "UA-106200856-1"
 
 [permalinks]
 blog  = "blog/:slug/"
