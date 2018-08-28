@@ -9,15 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="xtrymind">
-<meta name="description" content="If by any chance you came across geany problem of failed to load icon like
-(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that">
+<meta name="description" content="fix geany warning">
 
 <meta property="og:title" content="Fix geany warning of failed to load icon" />
-<meta property="og:description" content="If by any chance you came across geany problem of failed to load icon like
-(geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-var&#39;: Icon &#39;classviewer-var&#39; not present in theme (geany:2851): Geany-WARNING **: failed to load icon &#39;classviewer-method&#39;: Icon &#39;classviewer-method&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-save-all&#39; for stock: Icon &#39;geany-save-all&#39; not present in theme (geany:2851): Gtk-WARNING **: Error loading theme icon &#39;geany-build&#39; for stock: Icon &#39;geany-build&#39; not present in theme  just run gtk-update-icon-cache hicolor icons to fix that" />
+<meta property="og:description" content="fix geany warning" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xtrymind.github.io/blog/fix-geany-warning-of-failed-to-load-icon/" /><meta property="article:published_time" content="2017-03-24T16:45:26&#43;07:00"/>
-<meta property="article:modified_time" content="2017-03-24T16:45:26&#43;07:00"/>
+<meta property="article:modified_time" content="2018-08-23T06:16:00&#43;07:00"/>
 
 <title>
 
@@ -43,11 +41,11 @@
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-22%2006%3a26%3a41.400783894%20%2b0700%20WIB%20m%3d%2b0.056871588">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-22%2006%3a26%3a41.400783894%20%2b0700%20WIB%20m%3d%2b0.056871588">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-22%2006%3a26%3a41.400783894%20%2b0700%20WIB%20m%3d%2b0.056871588">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-28%2007%3a27%3a25.967879472%20%2b0700%20WIB%20m%3d%2b0.842179908">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-28%2007%3a27%3a25.967879472%20%2b0700%20WIB%20m%3d%2b0.842179908">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-28%2007%3a27%3a25.967879472%20%2b0700%20WIB%20m%3d%2b0.842179908">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-22%2006%3a26%3a41.400783894%20%2b0700%20WIB%20m%3d%2b0.056871588">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-28%2007%3a27%3a25.967879472%20%2b0700%20WIB%20m%3d%2b0.842179908">
     
 
 
@@ -183,7 +181,7 @@ stock: Icon 'geany-build' not present in theme
 
 <p>just run <code>gtk-update-icon-cache</code> hicolor icons to fix that</p>
 
-<pre><code>users $ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
+<pre><code>$ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
 </code></pre>
 
                 <br>
@@ -200,6 +198,17 @@ stock: Icon 'geany-build' not present in theme
 </section>
 
 
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-106200856-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 

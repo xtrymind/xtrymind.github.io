@@ -186,9 +186,8 @@ repo add xyne repo to /etc/pacman.conf
       
       <guid>https://xtrymind.github.io/blog/inxi-great-cli-system-informations/</guid>
       <description>There&amp;rsquo;s lot of cli based system information on linux, like neofetch, screenfetch, etc. inxi is one of those cli based system information, with a lot of options to get all system informations you need like cpu, machine, bios graphic, network, audio, drives and more.
-install with command
-$ sudo pacman -S inxi  first, run this command
-$ inxi --recommend  that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature</description>
+Since inxi has been moved to aur, you need to build it yourself. if using aur helper like trizen :
+$ trizen -S inxi  or build it with makepkg</description>
     </item>
     
     <item>
