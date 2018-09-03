@@ -292,7 +292,7 @@ install bluetooth /bin/false
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
 
 ```shell
-$ sudo pacman -S xorg-backlight
+$ sudo pacman -S xorg-xbacklight xf86-video-intel
 ```
 add ``20-intel.conf`` to ``/etc/X11/xorg.conf.d/:``
 ```shell
@@ -302,10 +302,8 @@ $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
 	Identifier  "Intel Graphics"
 	Driver      "intel"
-	Option      "DRI" "2"             # DRI3 is now default
-	Option 		"TearFree" "true"
-	#Option      "AccelMethod"  "sna" # default
-	#Option      "AccelMethod"  "uxa" # fallback
+	Option      "AccelMethod"  "sna"
+        Option      "Backlight"  "intel_backlight"
 EndSection
 ```
 Now, add commands to xbindkeys for manipulating the backlight:
