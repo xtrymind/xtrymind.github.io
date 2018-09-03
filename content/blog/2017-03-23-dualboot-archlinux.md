@@ -219,6 +219,8 @@ $ sudo pacman -S rxvt-unicode urxvt-perls
 
 check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detail on how to configure urxvt.
 
+### Device
+
 #### Touchpad
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
 ```shell
@@ -241,7 +243,6 @@ Section "InputClass"
 EndSection
 ```
 
-#### Power Management
 #### Powertop
 install it by command
 ```shell
@@ -363,14 +364,6 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", RUN+="/usr
 Enable trim support
 ```shell
 $ sudo systemctl enable fstrim.timer
-```
-#### HDAPSD
-
-Protects your hard drive from sudden shocks
-
-```shell
-$ sudo pacman -S hdapsd
-$ sudo systemctl enable hdapsd
 ```
 
 ### Performance
