@@ -114,7 +114,7 @@ tittle    Arch
 linux     /vmlinuz-linux
 initrd    /initramfs-linux.img
 initrd    /intel-ucode.img
-options   root=PARTUUID=xxxxx-xxx-xx rw
+options   root=PARTUUID=xxxxx-xxx-xx rw scsi_mod.use_blk_mq=1
 ```
 ```
 # change entries on /boot/loader/loader.conf
@@ -358,4 +358,20 @@ $ sudo pacman -S hdapsd
 $ sudo systemctl enable hdapsd
 ```
 
+### Performance
+#### Input/output schedulers
+Reference [Arch Wiki](https://wiki.archlinux.org/index.php/Improving_performance#Input.2Foutput_schedulers)
 
+Enable `scsi_mod.use_blk_mq=1` to kernel parameters to enable block multi-queue (blk-mq) mode.
+
+Add io scheduler rules to udev
+```shell
+$ /etc/udev/rules.d/60-ioschedulers.rules
+```
+Set ssd with deadline and hdd to bfq
+```
+# set scheduler for non-rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*|nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+# set scheduler for rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+```
