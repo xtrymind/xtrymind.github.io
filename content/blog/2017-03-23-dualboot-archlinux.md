@@ -174,33 +174,11 @@ Include = /etc/pacman.d/mirrorlist
 ```shell
 $ sudo pacman -Sy
 ```
-
-#### Display
-
-#### Driver
-```shell
-$ sudo pacman -S nvidia mesa xf86-video-intel
-```
-
 #### Xorg
 ```shell
 $ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
 ```
-
-#### Bumblebee
-```shell
-$ sudo pacman -S bbswitch bumblebee
-$ sudo gpasswd -a xtrymind bumblebee
-$ sudo systemctl enable bumblebeed
-```
-
-After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
-```shell
-$ cat /proc/acpi/bbswitch
-0000:01:00.0 OFF
-```
-
-#### WM
+#### Window Manager
 install i3 as window manager
 ```shell
 $ sudo pacman -S i3
@@ -220,6 +198,22 @@ $ sudo pacman -S rxvt-unicode urxvt-perls
 check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detail on how to configure urxvt.
 
 ### Device
+
+#### Display
+Install nvidia, mesa and xf86-video-intel. Also bbswitch and bumblebee
+```shell
+$ sudo pacman -S nvidia mesa xf86-video-intel bbswitch bumblebee
+```
+Enable bumblebee
+```shell
+$ sudo gpasswd -a xtrymind bumblebee
+$ sudo systemctl enable bumblebeed
+```
+After rebooting, check card status
+```shell
+$ cat /proc/acpi/bbswitch
+0000:01:00.0 OFF
+```
 
 #### Touchpad
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
