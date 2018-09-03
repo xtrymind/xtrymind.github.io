@@ -321,8 +321,11 @@ Now, add commands to xbindkeys for manipulating the backlight:
 ```
 
 #### Sound
-
-Just install ``alsa-utils``, and use ``alsamixer`` to unmute the master channel. Should just work.
+Works out of the box, just need to unmute with alsamixer or other sound control
+```
+$ sudo pacman -S alsa-utils
+$ alsamixer
+```
 
 For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
 ```
