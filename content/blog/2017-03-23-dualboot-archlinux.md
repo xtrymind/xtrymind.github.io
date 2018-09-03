@@ -346,7 +346,19 @@ For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
    m:0x0 + c:121
    XF86AudioMute
 ```
-#### Disk
+#### Hard disk
+Change Advance Power Management and standby timeout. Reference [Arch Wiki](https://wiki.archlinux.org/index.php/Hdparm#Power_management_configuration)
+```
+$ sudo pacman -S hdparm
+```
+add udev rules to make it permanent
+```
+$ sudo vim /etc/udev/rules.d/69-hdparm.rules
+```
+Set APM 128 and standby timeout 1 minutes
+```
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", RUN+="/usr/bin/hdparm -B 128 -S 12 /dev/%k"
+```
 #### SSD
 Enable trim support
 ```shell
