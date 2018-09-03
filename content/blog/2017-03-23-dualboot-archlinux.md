@@ -274,6 +274,8 @@ vm.laptop_mode = 5
 ```
 
 #### Disable Bluetooth
+**Already fix in kernel 4.18**
+
 As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg caused by crappy ar9485 chipset mainly bluetooth module.
 ```shell
 $ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
