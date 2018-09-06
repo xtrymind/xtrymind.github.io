@@ -377,3 +377,12 @@ ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*|nvme[0-9]*", ATTR{queue/rota
 # set scheduler for rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
 ```
+#### Disable Watchdog
+Append `nowatchdog` to kernel parameters & blacklist watchdog module just in case `nowatchdog` didn't work.
+```
+$ sudo vim /etc/modprobe.d/nowatchdog.conf
+```
+and append this
+```
+blacklist iTCO_wdt
+```
