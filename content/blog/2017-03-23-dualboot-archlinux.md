@@ -297,10 +297,11 @@ $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
 ```
 ```
 Section "Device"
-	Identifier  "Intel Graphics"
-	Driver      "intel"
-	Option      "AccelMethod"  "sna"
-        Option      "Backlight"  "intel_backlight"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option      "AccelMethod"  "sna"
+    Option      "TearFree"  "true"
+    Option      "Backlight"  "intel_backlight"
 EndSection
 ```
 Now, add commands to xbindkeys for manipulating the backlight:
