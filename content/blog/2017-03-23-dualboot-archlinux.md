@@ -233,7 +233,7 @@ Section "InputClass"
 	MatchIsTouchpad "on"
 	Option "Tapping" "on"
 	Option "Natural Scrolling" "on"
-	Option "Accel Speed" "0.5"
+	Option "Accel Speed" "0.25"
 EndSection
 ```
 
