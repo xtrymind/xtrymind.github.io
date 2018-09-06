@@ -43,11 +43,11 @@
 
 
     
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-08-28%2007%3a27%3a25.967630339%20%2b0700%20WIB%20m%3d%2b0.841930757">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-08-28%2007%3a27%3a25.967630339%20%2b0700%20WIB%20m%3d%2b0.841930757">
-    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-08-28%2007%3a27%3a25.967630339%20%2b0700%20WIB%20m%3d%2b0.841930757">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/reset.css?t=2018-09-06%2007%3a16%3a41.954968484%20%2b0700%20WIB%20m%3d%2b0.116040892">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/pygments.css?t=2018-09-06%2007%3a16%3a41.954968484%20%2b0700%20WIB%20m%3d%2b0.116040892">
+    <link rel="stylesheet" href="https://xtrymind.github.io/css/main.css?t=2018-09-06%2007%3a16%3a41.954968484%20%2b0700%20WIB%20m%3d%2b0.116040892">
     
-        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-08-28%2007%3a27%3a25.967630339%20%2b0700%20WIB%20m%3d%2b0.841930757">
+        <link rel="stylesheet" href="https://xtrymind.github.io/css/override.css?t=2018-09-06%2007%3a16%3a41.954968484%20%2b0700%20WIB%20m%3d%2b0.116040892">
     
 
 
@@ -320,7 +320,7 @@ tittle    Arch
 linux     /vmlinuz-linux
 initrd    /initramfs-linux.img
 initrd    /intel-ucode.img
-options   root=PARTUUID=xxxxx-xxx-xx rw
+options   root=PARTUUID=xxxxx-xxx-xx rw scsi_mod.use_blk_mq=1
 </code></pre>
 
 <pre><code># change entries on /boot/loader/loader.conf
@@ -386,32 +386,12 @@ Include = /etc/pacman.d/mirrorlist
 <pre><code class="language-shell">$ sudo pacman -Sy
 </code></pre>
 
-<h4 id="display">Display</h4>
-
-<h4 id="driver">Driver</h4>
-
-<pre><code class="language-shell">$ sudo pacman -S nvidia mesa xf86-video-intel
-</code></pre>
-
 <h4 id="xorg">Xorg</h4>
 
 <pre><code class="language-shell">$ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
 </code></pre>
 
-<h4 id="bumblebee">Bumblebee</h4>
-
-<pre><code class="language-shell">$ sudo pacman -S bbswitch bumblebee
-$ sudo gpasswd -a xtrymind bumblebee
-$ sudo systemctl enable bumblebeed
-</code></pre>
-
-<p>After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop</p>
-
-<pre><code class="language-shell">$ cat /proc/acpi/bbswitch
-0000:01:00.0 OFF
-</code></pre>
-
-<h4 id="wm">WM</h4>
+<h4 id="window-manager">Window Manager</h4>
 
 <p>install i3 as window manager</p>
 
@@ -431,6 +411,27 @@ exec i3
 </code></pre>
 
 <p>check <a href="https://wiki.archlinux.org/index.php/Rxvt-unicode">arch wiki</a> for more detail on how to configure urxvt.</p>
+
+<h3 id="device">Device</h3>
+
+<h4 id="display">Display</h4>
+
+<p>Install nvidia, mesa and xf86-video-intel. Also bbswitch and bumblebee</p>
+
+<pre><code class="language-shell">$ sudo pacman -S nvidia mesa xf86-video-intel bbswitch bumblebee
+</code></pre>
+
+<p>Enable bumblebee</p>
+
+<pre><code class="language-shell">$ sudo gpasswd -a xtrymind bumblebee
+$ sudo systemctl enable bumblebeed
+</code></pre>
+
+<p>After rebooting, check card status</p>
+
+<pre><code class="language-shell">$ cat /proc/acpi/bbswitch
+0000:01:00.0 OFF
+</code></pre>
 
 <h4 id="touchpad">Touchpad</h4>
 
@@ -453,8 +454,6 @@ exec i3
 	Option &quot;Accel Speed&quot; &quot;0.5&quot;
 EndSection
 </code></pre>
-
-<h4 id="power-management">Power Management</h4>
 
 <h4 id="powertop">Powertop</h4>
 
@@ -493,6 +492,8 @@ and add :</p>
 
 <h4 id="disable-bluetooth">Disable Bluetooth</h4>
 
+<p><strong>Already fix in kernel 4.18</strong></p>
+
 <p>As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg caused by crappy ar9485 chipset mainly bluetooth module.</p>
 
 <pre><code class="language-shell">$ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
@@ -511,7 +512,7 @@ install bluetooth /bin/false
 
 <p>The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.</p>
 
-<pre><code class="language-shell">$ sudo pacman -S xorg-backlight
+<pre><code class="language-shell">$ sudo pacman -S xorg-xbacklight xf86-video-intel
 </code></pre>
 
 <p>add <code>20-intel.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
@@ -522,10 +523,8 @@ install bluetooth /bin/false
 <pre><code>Section &quot;Device&quot;
 	Identifier  &quot;Intel Graphics&quot;
 	Driver      &quot;intel&quot;
-	Option      &quot;DRI&quot; &quot;2&quot;             # DRI3 is now default
-	Option 		&quot;TearFree&quot; &quot;true&quot;
-	#Option      &quot;AccelMethod&quot;  &quot;sna&quot; # default
-	#Option      &quot;AccelMethod&quot;  &quot;uxa&quot; # fallback
+	Option      &quot;AccelMethod&quot;  &quot;sna&quot;
+        Option      &quot;Backlight&quot;  &quot;intel_backlight&quot;
 EndSection
 </code></pre>
 
@@ -544,7 +543,11 @@ EndSection
 
 <h4 id="sound">Sound</h4>
 
-<p>Just install <code>alsa-utils</code>, and use <code>alsamixer</code> to unmute the master channel. Should just work.</p>
+<p>Works out of the box, just need to unmute with alsamixer or other sound control</p>
+
+<pre><code>$ sudo pacman -S alsa-utils
+$ alsamixer
+</code></pre>
 
 <p>For keyboard hotkeys, add the following to <code>xbindkeys</code> configuration:</p>
 
@@ -564,7 +567,22 @@ EndSection
    XF86AudioMute
 </code></pre>
 
-<h4 id="disk">Disk</h4>
+<h4 id="hard-disk">Hard disk</h4>
+
+<p>Change Advance Power Management and standby timeout. Reference <a href="https://wiki.archlinux.org/index.php/Hdparm#Power_management_configuration">Arch Wiki</a></p>
+
+<pre><code>$ sudo pacman -S hdparm
+</code></pre>
+
+<p>add udev rules to make it permanent</p>
+
+<pre><code>$ sudo vim /etc/udev/rules.d/69-hdparm.rules
+</code></pre>
+
+<p>Set APM 128 and standby timeout 1 minutes</p>
+
+<pre><code>ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, RUN+=&quot;/usr/bin/hdparm -B 128 -S 12 /dev/%k&quot;
+</code></pre>
 
 <h4 id="ssd">SSD</h4>
 
@@ -573,12 +591,37 @@ EndSection
 <pre><code class="language-shell">$ sudo systemctl enable fstrim.timer
 </code></pre>
 
-<h4 id="hdapsd">HDAPSD</h4>
+<h3 id="performance">Performance</h3>
 
-<p>Protects your hard drive from sudden shocks</p>
+<h4 id="input-output-schedulers">Input/output schedulers</h4>
 
-<pre><code class="language-shell">$ sudo pacman -S hdapsd
-$ sudo systemctl enable hdapsd
+<p>Reference <a href="https://wiki.archlinux.org/index.php/Improving_performance#Input.2Foutput_schedulers">Arch Wiki</a></p>
+
+<p>Enable <code>scsi_mod.use_blk_mq=1</code> to kernel parameters to enable block multi-queue (blk-mq) mode.</p>
+
+<p>Add io scheduler rules to udev</p>
+
+<pre><code class="language-shell">$ /etc/udev/rules.d/60-ioschedulers.rules
+</code></pre>
+
+<p>Set ssd with deadline and hdd to bfq</p>
+
+<pre><code># set scheduler for non-rotating disks
+ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]|mmcblk[0-9]*|nvme[0-9]*&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;mq-deadline&quot;
+# set scheduler for rotating disks
+ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;bfq&quot;
+</code></pre>
+
+<h4 id="disable-watchdog">Disable Watchdog</h4>
+
+<p>Append <code>nowatchdog</code> to kernel parameters &amp; blacklist watchdog module just in case <code>nowatchdog</code> didn&rsquo;t work.</p>
+
+<pre><code>$ sudo vim /etc/modprobe.d/nowatchdog.conf
+</code></pre>
+
+<p>and append this</p>
+
+<pre><code>blacklist iTCO_wdt
 </code></pre>
 
                 <br>
