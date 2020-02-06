@@ -114,7 +114,7 @@ dateFormatToUse = "2006-01-02"
 
   # Footer CopyRight Info
   ## Site creation time
-  since = 2019
+  since = 2017
   ## ICP info only in China (HTML format is allowed)
   icp = ""
   ## license info (HTML format is allowed)
