@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Enable adoptive storage on Sony Xperia M4Aqua | xtrymind</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="About LoveIt Theme"><link rel="prev" href="https://xtrymind.github.io/2017/03/2017-03-31-bootloader/" /><link rel="next" href="https://xtrymind.github.io/2017/04/2017-04-04-remove-bloatware/" /><link rel="canonical" href="https://xtrymind.github.io/2017/04/2017-04-01-sony-m4aqua-adoptive-storage/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><meta property="og:title" content="Enable adoptive storage on Sony Xperia M4Aqua" />
+<meta property="og:description" content="Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.
+well, if you want to read more :
+ Android greenbot  Sony comes up with Marshmallow (there won&rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/2017/04/2017-04-01-sony-m4aqua-adoptive-storage/" />
+<meta property="article:published_time" content="2017-04-01T07:39:26+07:00" />
+<meta property="article:modified_time" content="2017-04-01T07:39:26+07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Enable adoptive storage on Sony Xperia M4Aqua"/>
+<meta name="twitter:description" content="Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.
+well, if you want to read more :
+ Android greenbot  Sony comes up with Marshmallow (there won&rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data)."/>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Enable adoptive storage on Sony Xperia M4Aqua",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xtrymind.github.io\/2017\/04\/2017-04-01-sony-m4aqua-adoptive-storage\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","wordcount":  286 ,
+        "url": "https:\/\/xtrymind.github.io\/2017\/04\/2017-04-01-sony-m4aqua-adoptive-storage\/","datePublished": "2017-04-01T07:39:26\x2b07:00","dateModified": "2017-04-01T07:39:26\x2b07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"description": ""
+    }
+    </script><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/css/lib/animate/animate.min.css"></head>
+    <body><script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://xtrymind.github.io/">xtrymind</a>
+        </div>
+        <div class="navbar-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><nav class="navbar-mobile">
+    <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://xtrymind.github.io/">xtrymind</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container"><article class="page"><h1 class="post-title animated flipInX">Enable adoptive storage on Sony Xperia M4Aqua</h1><div class="post-meta">
+            <div class="post-meta-main"><a class="author" href="https://xtrymind.github.io/" rel="author" target="_blank">
+                    <i class="fas fa-user-circle fa-fw"></i>Dede Dindin Qudsy
+                </a>&nbsp;</div>
+            <div class="post-meta-other"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2017-04-01>2017-04-01</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 286 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>2 min&nbsp;</div>
+        </div><div class="post-content"><p>Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.</p>
+<p>well, if you want to read more :</p>
+<ul>
+<li><a href="https://source.android.com/devices/storage/adoptable.html" target="_blank">Android</a></li>
+<li><a href="http://www.greenbot.com/article/3039136/android/adoptable-storage-in-android-6-0-what-it-is-how-it-works.html" target="_blank">greenbot</a></li>
+</ul>
+<p>Sony comes up with Marshmallow (there won&rsquo;t be Nougat) firmware for Xperia M4Aqua, but it didn&rsquo;t implemented adoptive storage ( i mean, come on sony, some variant m4aqua just have 8GB storage and fresh installed firmware just leave around 2GB left for data).</p>
+<p>But yes, fortunately sony didn&rsquo;t completely remove adoptive feature, with adb shell you can still use it. You need fast SDCard, the faster the better. Backup you sdcard data and format it with fat32.</p>
+<p>You need to enable USB debugging on Developer options first, then do the following command :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">## check your device connected or not
+$ adb devices
+## login to your phone shell
+$ adb shell
+ 
+$ sm list-disks
+disk:179,64
+$ sm partition disk:179,64 mixed 50
+</code></pre></td></tr></table>
+</div>
+</div><p>Note :</p>
+<ul>
+<li><code>mixed 50</code> it&rsquo;s mean your sdcard will be halved, half for your adoptive and half for your sdcard, if you want smaller adoptive use <code>mixed 70</code> that mean, 30 for adoptive and 70 for your sdcard.</li>
+<li>if you want to remove adoptive, use <code>sm partition disk:diskid public</code> example <code>sm partition disk:179,64 public</code></li>
+<li>doing <code>sm partition</code> command will format your sdcard, so do not forget to backup content of sdcard.</li>
+<li>since some M4Aqua variant max storage is 16 GB, you should set your adoptive storage at 8 GB or less, in my experience set adoptive more than 8 GB, i haven&rsquo;t face any problem beside storage total size not counting properly like <code>-811228283 GB</code>. But some people have problem when they set more than 8 GB.</li>
+</ul>
+<div class="img-pad">
+<a href="http://imgur.com/u9QiztC"><img src="http://i.imgur.com/u9QiztC.png" title="source: imgur.com" /></a>
+</div>
+<div class="img-pad">
+<a href="http://imgur.com/DOQzDWx"><img src="http://i.imgur.com/DOQzDWx.png" title="source: imgur.com" /></a>
+</div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2017-04-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share"><span><a href="//twitter.com/share?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f04%2f2017-04-01-sony-m4aqua-adoptive-storage%2f&amp;text=Enable%20adoptive%20storage%20on%20Sony%20Xperia%20M4Aqua&amp;via=xtrymind" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxtrymind.github.io%2f2017%2f04%2f2017-04-01-sony-m4aqua-adoptive-storage%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a><a href="//reddit.com/submit?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f04%2f2017-04-01-sony-m4aqua-adoptive-storage%2f&amp;title=Enable%20adoptive%20storage%20on%20Sony%20Xperia%20M4Aqua" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a></span></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section></section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://xtrymind.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://xtrymind.github.io/2017/03/2017-03-31-bootloader/" class="prev" rel="prev" title="Bootloader / boot manager for your arch and windows dualboot installation"><i class="fas fa-angle-left fa-fw"></i>Bootloader / boot manager for your arch and windows dualboot installation</a>
+            <a href="https://xtrymind.github.io/2017/04/2017-04-04-remove-bloatware/" class="next" rel="next" title="Remove Bloatware on Sony Xperia M4Aqua">Remove Bloatware on Sony Xperia M4Aqua<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div><div class="post-comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://xtrymind.github.io/" target="_blank">Dede Dindin Qudsy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer></div><a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll>
+            <span>&nbsp;</span>
+        </a><script src="/js/lib/jquery/jquery.slim.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script><link rel="stylesheet" href="/css/lib/katex/katex.min.css"><script src="/js/lib/katex/katex.min.js"></script><script defer src="/js/lib/katex/auto-render.min.js"></script><link rel="stylesheet" href="/css/lib/katex/copy-tex.min.css"><script defer src="/js/lib/katex/copy-tex.min.js"></script><script defer src="/js/lib/katex/mhchem.min.js"></script><script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true },{ left: "$", right: "$", display: false },]
+            });
+        });
+    </script><script src="/js/blog.min.js"></script></body>
+</html>

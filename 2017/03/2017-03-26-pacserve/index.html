@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pacserve, usefull tool for share pacman packages | xtrymind</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="About LoveIt Theme"><link rel="prev" href="https://xtrymind.github.io/2017/03/2017-03-24-inxi/" /><link rel="next" href="https://xtrymind.github.io/2017/03/2017-03-31-bootloader/" /><link rel="canonical" href="https://xtrymind.github.io/2017/03/2017-03-26-pacserve/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><meta property="og:title" content="Pacserve, usefull tool for share pacman packages" />
+<meta property="og:description" content="If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called pacserve
+To install pacserve you can add xyne repo or with aur, either way, it&rsquo;s same.
+repo add xyne repo to /etc/pacman.conf
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  [xyne-any] # A repo for Xyne&#39;s own projects: http://xyne." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/2017/03/2017-03-26-pacserve/" />
+<meta property="article:published_time" content="2017-03-26T17:44:26+07:00" />
+<meta property="article:modified_time" content="2017-03-26T17:44:26+07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pacserve, usefull tool for share pacman packages"/>
+<meta name="twitter:description" content="If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called pacserve
+To install pacserve you can add xyne repo or with aur, either way, it&rsquo;s same.
+repo add xyne repo to /etc/pacman.conf
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  [xyne-any] # A repo for Xyne&#39;s own projects: http://xyne."/>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pacserve, usefull tool for share pacman packages",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xtrymind.github.io\/2017\/03\/2017-03-26-pacserve\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","wordcount":  275 ,
+        "url": "https:\/\/xtrymind.github.io\/2017\/03\/2017-03-26-pacserve\/","datePublished": "2017-03-26T17:44:26\x2b07:00","dateModified": "2017-03-26T17:44:26\x2b07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"description": ""
+    }
+    </script><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/css/lib/animate/animate.min.css"></head>
+    <body><script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://xtrymind.github.io/">xtrymind</a>
+        </div>
+        <div class="navbar-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><nav class="navbar-mobile">
+    <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://xtrymind.github.io/">xtrymind</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container"><article class="page"><h1 class="post-title animated flipInX">Pacserve, usefull tool for share pacman packages</h1><div class="post-meta">
+            <div class="post-meta-main"><a class="author" href="https://xtrymind.github.io/" rel="author" target="_blank">
+                    <i class="fas fa-user-circle fa-fw"></i>Dede Dindin Qudsy
+                </a>&nbsp;</div>
+            <div class="post-meta-other"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2017-03-26>2017-03-26</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 275 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>2 min&nbsp;</div>
+        </div><div class="post-content"><p>If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called <code>pacserve</code></p>
+<p>To install <code>pacserve</code> you can add xyne repo or with aur, either way, it&rsquo;s same.</p>
+<a class="post-dummy-target" id="repo"></a><h3>repo</h3>
+<p>add xyne repo to <code>/etc/pacman.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[xyne-any]
+# A repo for Xyne&#39;s own projects: http://xyne.archlinux.ca/projects/
+# Packages for &#34;any&#34; architecture.
+# Use this repo only if there is no matching [xyne-*] repo for your architecture.
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+
+[xyne-i686]
+# A repo for Xyne&#39;s own projects: http://xyne.archlinux.ca/projects/
+# Packages for the &#34;i686&#34; architecture.
+# Note that this includes all packages in [xyne-any].
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+
+[xyne-x86_64]
+# A repo for Xyne&#39;s own projects: http://xyne.archlinux.ca/projects/
+# Packages for the &#34;x86_64&#34; architecture.
+# Note that this includes all packages in [xyne-any].
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+</code></pre></td></tr></table>
+</div>
+</div><p>and then</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo pacman -Sy
+$ sudo pacman -S pacserve
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="aur"></a><h3>aur</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ gpg --recv-keys --keyserver hkp://pgp.mit.edu C2E5C0D2
+$ pacaur -y pacserve
+</code></pre></td></tr></table>
+</div>
+</div><p>And then enable and start pacserve service on your server and other Arch machine</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo systemctl enable pacserve
+$ sudo systemctl start pacserve
+</code></pre></td></tr></table>
+</div>
+</div><p>if you wanna update from your server use command :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo pacsrv -Syu
+</code></pre></td></tr></table>
+</div>
+</div><p>If you do not want to use the pacsrv wrapper script then add <code>Include = /etc/pacman.d/pacserve</code> (above official repo) to your pacman.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[core]
+Include = /etc/pacman.d/pacserve
+Include = /etc/pacman.d/mirrorlist
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2017-03-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share"><span><a href="//twitter.com/share?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-26-pacserve%2f&amp;text=Pacserve%2c%20usefull%20tool%20for%20share%20pacman%20packages&amp;via=xtrymind" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-26-pacserve%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a><a href="//reddit.com/submit?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-26-pacserve%2f&amp;title=Pacserve%2c%20usefull%20tool%20for%20share%20pacman%20packages" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a></span></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section></section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://xtrymind.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://xtrymind.github.io/2017/03/2017-03-24-inxi/" class="prev" rel="prev" title="Inxi great cli system informations"><i class="fas fa-angle-left fa-fw"></i>Inxi great cli system informations</a>
+            <a href="https://xtrymind.github.io/2017/03/2017-03-31-bootloader/" class="next" rel="next" title="Bootloader / boot manager for your arch and windows dualboot installation">Bootloader / boot manager for your arch and windows dualboot installation<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div><div class="post-comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://xtrymind.github.io/" target="_blank">Dede Dindin Qudsy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer></div><a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll>
+            <span>&nbsp;</span>
+        </a><script src="/js/lib/jquery/jquery.slim.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script><link rel="stylesheet" href="/css/lib/katex/katex.min.css"><script src="/js/lib/katex/katex.min.js"></script><script defer src="/js/lib/katex/auto-render.min.js"></script><link rel="stylesheet" href="/css/lib/katex/copy-tex.min.css"><script defer src="/js/lib/katex/copy-tex.min.js"></script><script defer src="/js/lib/katex/mhchem.min.js"></script><script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true },{ left: "$", right: "$", display: false },]
+            });
+        });
+    </script><script src="/js/blog.min.js"></script></body>
+</html>

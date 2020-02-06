@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Dualboot archlinux &amp; windows 10 on Asus A46CB | xtrymind</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="About LoveIt Theme"><link rel="prev" href="https://xtrymind.github.io/2017/03/2017-03-22-hide-windows-partition/" /><link rel="next" href="https://xtrymind.github.io/2017/03/2017-03-24-fix-geany/" /><link rel="canonical" href="https://xtrymind.github.io/2017/03/2017-03-23-dualboot-archlinux/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><meta property="og:title" content="Dualboot archlinux &amp; windows 10 on Asus A46CB" />
+<meta property="og:description" content="Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning  Format and mount disks   Install base system Configure base system  Chroot Bootloader Network Reboot   After installation  Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee   Terminal Touchpad Sound Hard Drive  SSD HDAPSD        Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xtrymind.github.io/2017/03/2017-03-23-dualboot-archlinux/" />
+<meta property="article:published_time" content="2017-03-23T14:20:26+07:00" />
+<meta property="article:modified_time" content="2017-03-23T14:20:26+07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dualboot archlinux &amp; windows 10 on Asus A46CB"/>
+<meta name="twitter:description" content="Table of Contents
+ Archlinux on Asus A46CB  Before Partitioning  Format and mount disks   Install base system Configure base system  Chroot Bootloader Network Reboot   After installation  Connect to the internet User Management Arch User Repository Mirror Graphics  Driver Xorg Bumblebee   Terminal Touchpad Sound Hard Drive  SSD HDAPSD        Archlinux on Asus A46CB Before  Disable Windows Fast-Startup Disable Secure Boot  Partitioning an example of Windows 10 Efi partitioning on 120GB SSD"/>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Dualboot archlinux \x26 windows 10 on Asus A46CB",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xtrymind.github.io\/2017\/03\/2017-03-23-dualboot-archlinux\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","wordcount":  1179 ,
+        "url": "https:\/\/xtrymind.github.io\/2017\/03\/2017-03-23-dualboot-archlinux\/","datePublished": "2017-03-23T14:20:26\x2b07:00","dateModified": "2017-03-23T14:20:26\x2b07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/xtrymind.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"description": ""
+    }
+    </script><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/css/lib/animate/animate.min.css"></head>
+    <body><script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://xtrymind.github.io/">xtrymind</a>
+        </div>
+        <div class="navbar-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><nav class="navbar-mobile">
+    <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://xtrymind.github.io/">xtrymind</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu"><a class="menu-item" href="https://xtrymind.github.io/posts" title="">Posts</a><a class="menu-item" href="https://xtrymind.github.io/tags" title="">Tags</a><a class="menu-item" href="https://xtrymind.github.io/categories" title="">Categories</a><a class="menu-item" href="https://xtrymind.github.io/about" title="">About</a><a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw" title="Switch Theme"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container"><article class="page"><h1 class="post-title animated flipInX">Dualboot archlinux &amp; windows 10 on Asus A46CB</h1><div class="post-meta">
+            <div class="post-meta-main"><a class="author" href="https://xtrymind.github.io/" rel="author" target="_blank">
+                    <i class="fas fa-user-circle fa-fw"></i>Dede Dindin Qudsy
+                </a>&nbsp;</div>
+            <div class="post-meta-other"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2017-03-23>2017-03-23</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 1179 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>6 min&nbsp;</div>
+        </div><div class="post-content"><p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#archlinux-on-asus-a46cb">Archlinux on Asus A46CB</a>
+<ul>
+<li><a href="#before">Before</a></li>
+<li><a href="#partitioning">Partitioning</a>
+<ul>
+<li><a href="#format-and-mount-disks">Format and mount disks</a></li>
+</ul>
+</li>
+<li><a href="#install-base-system">Install base system</a></li>
+<li><a href="#configure-base-system">Configure base system</a>
+<ul>
+<li><a href="#chroot">Chroot</a></li>
+<li><a href="#bootloader">Bootloader</a></li>
+<li><a href="#network">Network</a></li>
+<li><a href="#reboot">Reboot</a></li>
+</ul>
+</li>
+<li><a href="#after-installation">After installation</a>
+<ul>
+<li><a href="#connect-to-the-internet">Connect to the internet</a></li>
+<li><a href="#user-management">User Management</a></li>
+<li><a href="#arch-user-repository">Arch User Repository</a></li>
+<li><a href="#mirror">Mirror</a></li>
+<li><a href="#graphics">Graphics</a>
+<ul>
+<li><a href="#driver">Driver</a></li>
+<li><a href="#xorg">Xorg</a></li>
+<li><a href="#bumblebee">Bumblebee</a></li>
+</ul>
+</li>
+<li><a href="#terminal">Terminal</a></li>
+<li><a href="#touchpad">Touchpad</a></li>
+<li><a href="#sound">Sound</a></li>
+<li><a href="#disk">Hard Drive</a>
+<ul>
+<li><a href="#ssd">SSD</a></li>
+<li><a href="#hdapsd">HDAPSD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="archlinux-on-asus-a46cb">Archlinux on Asus A46CB</h1>
+<a class="post-dummy-target" id="before"></a><h3>Before</h3>
+<ol>
+<li>Disable Windows Fast-Startup</li>
+<li>Disable Secure Boot</li>
+</ol>
+<a class="post-dummy-target" id="partitioning"></a><h3>Partitioning</h3>
+<p>an example of Windows 10 Efi partitioning on 120GB SSD</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th align="center">Location</th>
+<th align="center">Size</th>
+<th align="center">File system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recovery</td>
+<td align="center">sda1</td>
+<td align="center">450 MB</td>
+<td align="center">ntfs</td>
+</tr>
+<tr>
+<td>ESP</td>
+<td align="center">sda2</td>
+<td align="center">100 MB</td>
+<td align="center">vfat</td>
+</tr>
+<tr>
+<td>Reserved</td>
+<td align="center">sda3</td>
+<td align="center">16 MB</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td>Windows 10</td>
+<td align="center">sda4</td>
+<td align="center">53 GB</td>
+<td align="center">ntfs</td>
+</tr>
+<tr>
+<td>Arch</td>
+<td align="center">sda5</td>
+<td align="center">58 GB</td>
+<td align="center">ext4</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="format-and-mount-disks"></a><h4>Format and mount disks</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># mkfs.ext4 /dev/sda5</span>
+<span class="c1"># mount /dev/sda5 /mnt</span>
+<span class="c1"># mkdir /mnt/boot</span>
+<span class="c1"># mount /dev/sda2 /mnt/boot</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="install-base-system"></a><h3>Install base system</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># wifi-menu</span>
+<span class="c1"># ping  -c 3 www.google.com #check connections</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>install system and generate fstab</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># pacstrap /mnt base base-devel zsh vim #install base base development zsh and vim to /mnt</span> 
+<span class="c1"># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab #generate new fstab</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="configure-base-system"></a><h3>Configure base system</h3>
+<a class="post-dummy-target" id="chroot"></a><h4>Chroot</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># arch-chroot /mnt #enter chroot</span>
+
+<span class="c1"># passwd #password for root</span>
+
+<span class="c1"># ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime #timezone</span>
+<span class="c1"># hwclock --systohc #Hardware clock</span>
+
+
+<span class="c1"># vim /etc/locale.gen #uncomment `en_US.UTF-8`</span>
+<span class="c1"># locale-gen #generate locale</span>
+<span class="c1"># echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span>
+<span class="c1"># export LANG=en_US.UTF-8</span>
+
+
+<span class="c1"># echo arch &gt; /etc/hostname #Hostname</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># edit /etc/hosts
+127.0.0.1   localhost.localdomain   localhost
+::1         localhost.localdomain   localhost
+127.0.1.1   arch.localdomain        arch
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="bootloader"></a><h4>Bootloader</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># pacman -S intel-ucode #install intel ucode if you have intel processor</span>
+
+<span class="c1"># mkinitcpio -p linux #Initial ramdisk environment</span>
+
+<span class="c1"># bootctl --path=/boot install #install bootloader, using systemd-boot</span>
+
+<span class="c1"># blkid -s PARTUUID -o value /dev/sdxY #check partuuid of / partition</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Then add following content to /boot/loader/entries/arch.conf
+tittle    Arch
+linux     /vmlinuz-linux
+initrd    /initramfs-linux.img
+initrd    /intel-ucode.img
+options   root=PARTUUID=xxxxx-xxx-xx rw scsi_mod.use_blk_mq=1
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># change entries on /boot/loader/loader.conf
+timeout 5
+default arch
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="network"></a><h4>Network</h4>
+<p>Network configuration (Wi-Fi)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># pacman -S wpa_supplicant networkmanager dialog</span>
+<span class="c1"># systemctl enable NetworkManager</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add <code>options ath9k nohwcrypt=1</code> to <code>/etc/modprobe.d/ath9k.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># echo options ath9k nohwcrypt=1 &gt;&gt; /etc/modprobe.d/ath9k.conf</span> 
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="reboot"></a><h4>Reboot</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># exit</span>
+<span class="c1"># umount -R /mnt</span>
+<span class="c1"># reboot</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="after-installation"></a><h3>After installation</h3>
+<a class="post-dummy-target" id="connect-to-the-internet"></a><h4>Connect to the internet</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># nmtui</span>
+<span class="c1"># ping google.co.id</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="user-management"></a><h4>User Management</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># useradd -m -G wheel,users -s /bin/zsh xtrymind #add user</span>
+<span class="c1"># passwd xtrymind</span>
+
+<span class="c1"># EDITOR=vim visudo #enable sudo for users</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># Uncomment this line in vim:</span>
+<span class="na">%wheel ALL</span><span class="o">=</span><span class="s">(ALL) ALL</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="mirror"></a><h4>Mirror</h4>
+<p>best mirror</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S reflector
+$ sudo reflector --latest <span class="m">200</span> --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre></td></tr></table>
+</div>
+</div><p>enable 32bit support</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># In `/etc/pacman.conf`, uncomment:</span>
+<span class="k">[multilib]</span>
+<span class="na">Include</span> <span class="o">=</span> <span class="s">/etc/pacman.d/mirrorlist</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -Sy
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="xorg"></a><h4>Xorg</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="window-manager"></a><h4>Window Manager</h4>
+<p>install i3 as window manager</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S i3
+$ cp /etc/X11/xinit/xinitrc ~/.xinitrc <span class="c1">#copy xinit to home dirrectory</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># open .xinitrc and delete started from twm &amp; to exec xterm and add</span>
+<span class="na">exec i3</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="terminal"></a><h4>Terminal</h4>
+<p>rxvt-unicode or urxvt is a nice terminal emulator, it&rsquo;s small and fast but a little complicated to configure</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S rxvt-unicode urxvt-perls
+</code></pre></td></tr></table>
+</div>
+</div><p>check <a href="https://wiki.archlinux.org/index.php/Rxvt-unicode" target="_blank">arch wiki</a> for more detail on how to configure urxvt.</p>
+<a class="post-dummy-target" id="device"></a><h3>Device</h3>
+<a class="post-dummy-target" id="display"></a><h4>Display</h4>
+<p>Install nvidia, mesa and xf86-video-intel. Also bbswitch and bumblebee</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S nvidia mesa xf86-video-intel bbswitch bumblebee
+</code></pre></td></tr></table>
+</div>
+</div><p>Enable bumblebee</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo gpasswd -a xtrymind bumblebee
+$ sudo systemctl <span class="nb">enable</span> bumblebeed
+</code></pre></td></tr></table>
+</div>
+</div><p>After rebooting, check card status</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/acpi/bbswitch
+0000:01:00.0 OFF
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="touchpad"></a><h4>Touchpad</h4>
+<p>install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S libinput xf86-input-libinput
+</code></pre></td></tr></table>
+</div>
+</div><p>add <code>30-touchpad.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Section &#34;InputClass&#34;
+	Identifier &#34;touchpad&#34;
+	Driver &#34;libinput&#34;
+	MatchIsTouchpad &#34;on&#34;
+	Option &#34;Tapping&#34; &#34;on&#34;
+	Option &#34;Natural Scrolling&#34; &#34;on&#34;
+	Option &#34;Accel Speed&#34; &#34;0.25&#34;
+EndSection
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="powertop"></a><h4>Powertop</h4>
+<p>install it by command</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S powertop
+</code></pre></td></tr></table>
+</div>
+</div><p>and add systemd service, create ``/etc/systemd/system/powertop.service```</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Unit]
+Description=Powertop tunings
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/powertop --auto-tune
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></td></tr></table>
+</div>
+</div><p>then enable it</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo systemctl <span class="nb">enable</span> powertop.service
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="laptop-mode"></a><h4>Laptop Mode</h4>
+<p>see this <a href="https://www.kernel.org/doc/Documentation/laptops/laptop-mode.txt" target="_blank">kernel documentation</a> about laptop mode, it help minimize the time that the hard disk needs to be spun up, to conserve battery power on laptops.</p>
+<p>create <code>/etc/sysctl.d/laptop.conf</code>
+and add :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">vm.laptop_mode = 5
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="disable-bluetooth"></a><h4>Disable Bluetooth</h4>
+<p><strong>Already fix in kernel 4.18</strong></p>
+<p>As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg caused by crappy ar9485 chipset mainly bluetooth module.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="o">[</span> 3499.880081<span class="o">]</span> usb 2-3: device descriptor read/64, error -110
+$ <span class="o">[</span> 3515.096081<span class="o">]</span> usb 2-3: device descriptor read/64, error -110
+</code></pre></td></tr></table>
+</div>
+</div><p>to disable it make <code>/etc/modprobe.d/bluetooth.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># disable bluetooth
+blacklist btusb bluetooth
+install btusb /bin/false
+install bluetooth /bin/false
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="backlight"></a><h4>Backlight</h4>
+<p>The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo pacman -S xorg-xbacklight xf86-video-intel
+</code></pre></td></tr></table>
+</div>
+</div><p>add <code>20-intel.conf</code> to <code>/etc/X11/xorg.conf.d/:</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Section &#34;Device&#34;
+    Identifier  &#34;Intel Graphics&#34;
+    Driver      &#34;intel&#34;
+    Option      &#34;AccelMethod&#34;  &#34;sna&#34;
+    Option      &#34;TearFree&#34;  &#34;true&#34;
+    Option      &#34;Backlight&#34;  &#34;intel_backlight&#34;
+EndSection
+</code></pre></td></tr></table>
+</div>
+</div><p>Now, add commands to xbindkeys for manipulating the backlight:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Backlight Inc
+&#34;/usr/bin/xbacklight -inc 5&#34;
+    m:0x0 + c:233
+    XF86MonBrightnessUp
+
+# Backligth Dec
+&#34;/usr/bin/xbacklight -dec 5&#34;
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="sound"></a><h4>Sound</h4>
+<p>Works out of the box, just need to unmute with alsamixer or other sound control</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo pacman -S alsa-utils
+$ alsamixer
+</code></pre></td></tr></table>
+</div>
+</div><p>For keyboard hotkeys, add the following to <code>xbindkeys</code> configuration:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Volume Up
+&#34;/usr/bin/amixer set Master 5%+&#34;
+   m:0x0 + c:123
+   XF86AudioRaiseVolume
+
+# VOlume Down
+&#34;/usr/bin/amixer set Master 5%-&#34;
+   m:0x0 + c:122
+   XF86AudioLowerVolume
+
+# Mute
+&#34;/usr/bin/amixer set Master toggle&#34;
+   m:0x0 + c:121
+   XF86AudioMute
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="hard-disk"></a><h4>Hard disk</h4>
+<p>Change Advance Power Management and standby timeout. Reference <a href="https://wiki.archlinux.org/index.php/Hdparm#Power_management_configuration" target="_blank">Arch Wiki</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo pacman -S hdparm
+</code></pre></td></tr></table>
+</div>
+</div><p>add udev rules to make it permanent</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo vim /etc/udev/rules.d/69-hdparm.rules
+</code></pre></td></tr></table>
+</div>
+</div><p>Set APM 128 and standby timeout 1 minutes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ACTION==&#34;add|change&#34;, KERNEL==&#34;sd[a-z]&#34;, ATTR{queue/rotational}==&#34;1&#34;, RUN+=&#34;/usr/bin/hdparm -B 128 -S 12 /dev/%k&#34;
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="ssd"></a><h4>SSD</h4>
+<p>Enable trim support</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo systemctl <span class="nb">enable</span> fstrim.timer
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="performance"></a><h3>Performance</h3>
+<a class="post-dummy-target" id="inputoutput-schedulers"></a><h4>Input/output schedulers</h4>
+<p>Reference <a href="https://wiki.archlinux.org/index.php/Improving_performance#Input.2Foutput_schedulers" target="_blank">Arch Wiki</a></p>
+<p>Enable <code>scsi_mod.use_blk_mq=1</code> to kernel parameters to enable block multi-queue (blk-mq) mode.</p>
+<p>Add io scheduler rules to udev</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ /etc/udev/rules.d/60-ioschedulers.rules
+</code></pre></td></tr></table>
+</div>
+</div><p>Set ssd with deadline and hdd to bfq</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># set scheduler for non-rotating disks
+ACTION==&#34;add|change&#34;, KERNEL==&#34;sd[a-z]|mmcblk[0-9]*|nvme[0-9]*&#34;, ATTR{queue/rotational}==&#34;0&#34;, ATTR{queue/scheduler}=&#34;mq-deadline&#34;
+# set scheduler for rotating disks
+ACTION==&#34;add|change&#34;, KERNEL==&#34;sd[a-z]&#34;, ATTR{queue/rotational}==&#34;1&#34;, ATTR{queue/scheduler}=&#34;bfq&#34;
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="disable-watchdog"></a><h4>Disable Watchdog</h4>
+<p>Append <code>nowatchdog</code> to kernel parameters &amp; blacklist watchdog module just in case <code>nowatchdog</code> didn&rsquo;t work.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo vim /etc/modprobe.d/nowatchdog.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>and append this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">blacklist iTCO_wdt
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2017-03-23</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share"><span><a href="//twitter.com/share?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-23-dualboot-archlinux%2f&amp;text=Dualboot%20archlinux%20%26%20windows%2010%20on%20Asus%20A46CB&amp;via=xtrymind" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-23-dualboot-archlinux%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a><a href="//reddit.com/submit?url=https%3a%2f%2fxtrymind.github.io%2f2017%2f03%2f2017-03-23-dualboot-archlinux%2f&amp;title=Dualboot%20archlinux%20%26%20windows%2010%20on%20Asus%20A46CB" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a></span></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section></section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://xtrymind.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="https://xtrymind.github.io/2017/03/2017-03-22-hide-windows-partition/" class="prev" rel="prev" title="Hide windows partitions"><i class="fas fa-angle-left fa-fw"></i>Hide windows partitions</a>
+            <a href="https://xtrymind.github.io/2017/03/2017-03-24-fix-geany/" class="next" rel="next" title="Fix geany warning of failed to load icon">Fix geany warning of failed to load icon<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div><div class="post-comment"></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://xtrymind.github.io/" target="_blank">Dede Dindin Qudsy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer></div><a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll>
+            <span>&nbsp;</span>
+        </a><script src="/js/lib/jquery/jquery.slim.min.js"></script><script src="/js/lib/lazysizes/lazysizes.min.js"></script><script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script><link rel="stylesheet" href="/css/lib/katex/katex.min.css"><script src="/js/lib/katex/katex.min.js"></script><script defer src="/js/lib/katex/auto-render.min.js"></script><link rel="stylesheet" href="/css/lib/katex/copy-tex.min.css"><script defer src="/js/lib/katex/copy-tex.min.js"></script><script defer src="/js/lib/katex/mhchem.min.js"></script><script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true },{ left: "$", right: "$", display: false },]
+            });
+        });
+    </script><script src="/js/blog.min.js"></script></body>
+</html>
