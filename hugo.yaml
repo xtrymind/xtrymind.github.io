@@ -1,4 +1,17 @@
-baseURL: https://example.org/
+baseURL: "https://xtrymind.github.io/"
 languageCode: en-us
-title: My New Hugo Site
+title: xtrymind blog
 theme: ["PaperMod"]
+enableRobotsTXT: true
+
+# default amount of posts in each pages
+paginate : 10
+
+params:
+  author: Dede Dindin Qudsy
+
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowToc: true
