@@ -15,3 +15,8 @@ params:
   ShowReadingTime: true
   ShowShareButtons: true
   ShowToc: true
+
+module:
+  mounts:
+    source : 'images'
+    target : 'static/images'

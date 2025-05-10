@@ -10,3 +10,5 @@ Navigate to Network -> Firwall -> Traffic Rule
 Click Add
 Source zone set to iot zones, and destination zone set it to lan
 on destionation port, set it to 38899 and 38900
+
+![alt](/images/wiz_firewall.png)
