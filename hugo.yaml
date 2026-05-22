@@ -1,11 +1,17 @@
-baseURL: "https://xtrymind.github.io/"
+baseURL: "https://xtry.my.id"
 languageCode: en-us
-title: xtrymind blog
-theme: ["PaperMod"]
+title: Dede Dindin Qudsy | XTRYMIND
+theme: PaperMod
 enableRobotsTXT: true
 
 # default amount of posts in each pages
 paginate : 10
+
+menu:
+  main:
+  - name: Blog
+    url: posts/
+    weight: 1
 
 params:
   author: Dede Dindin Qudsy
@@ -15,6 +21,20 @@ params:
   ShowReadingTime: true
   ShowShareButtons: true
   ShowToc: true
+
+  homeInfoParams:
+    Title: "Hello"
+    Content: >
+      Just some average guy who trying to write from experience.
+
+  socialIcons:
+    # personal / site
+    - name: email
+      url: "mailto:xtrymind@gmail.com"
+    - name: github
+      url: "https://github.com/xtrymind"
+    - name: youtube
+      url: "https://www.youtube.com/@xtrymind"
 
 module:
   mounts:
